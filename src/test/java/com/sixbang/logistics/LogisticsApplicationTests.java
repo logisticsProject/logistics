@@ -22,5 +22,8 @@ public class LogisticsApplicationTests {
     public  void  test(){
         System.out.println("田岁安真帅");
     }
+    public  void  test(){
+        System.out.println("田岁安真衰");
+    }
 
 }
