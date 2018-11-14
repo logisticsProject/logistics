@@ -18,7 +18,7 @@ public class LogisticsApplicationTests {
 
     }
 
-
+   @Test
     public  void  test(){
         System.out.println("田岁安真帅");
     }
