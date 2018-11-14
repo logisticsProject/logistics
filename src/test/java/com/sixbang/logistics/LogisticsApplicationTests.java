@@ -13,4 +13,9 @@ public class LogisticsApplicationTests {
     public void contextLoads() {
     }
 
+
+    public  void  test(){
+        System.out.println("田岁安真帅");
+    }
+
 }
