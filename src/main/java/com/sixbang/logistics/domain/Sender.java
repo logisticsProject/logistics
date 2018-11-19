@@ -1,6 +1,8 @@
 package com.sixbang.logistics.domain;
 
-public class Sender {
+import java.io.Serializable;
+
+public class Sender implements Serializable {
     private Integer sid;
 
     private String sname;
@@ -8,6 +10,8 @@ public class Sender {
     private String sphone;
 
     private String saddress;
+
+    private static final long serialVersionUID = 1L;
 
     public Integer getSid() {
         return sid;
@@ -39,5 +43,20 @@ public class Sender {
 
     public void setSaddress(String saddress) {
         this.saddress = saddress == null ? null : saddress.trim();
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", sid=").append(sid);
+        sb.append(", sname=").append(sname);
+        sb.append(", sphone=").append(sphone);
+        sb.append(", saddress=").append(saddress);
+        sb.append(", serialVersionUID=").append(serialVersionUID);
+        sb.append("]");
+        return sb.toString();
     }
 }

@@ -1,8 +1,9 @@
 package com.sixbang.logistics.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Orders {
+public class Orders implements Serializable {
     private Integer id;
 
     private Integer sendorId;
@@ -42,6 +43,8 @@ public class Orders {
     private Integer by1;
 
     private String by2;
+
+    private static final long serialVersionUID = 1L;
 
     public Integer getId() {
         return id;
@@ -201,5 +204,36 @@ public class Orders {
 
     public void setBy2(String by2) {
         this.by2 = by2 == null ? null : by2.trim();
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", id=").append(id);
+        sb.append(", sendorId=").append(sendorId);
+        sb.append(", receiverId=").append(receiverId);
+        sb.append(", stateId=").append(stateId);
+        sb.append(", ispayed=").append(ispayed);
+        sb.append(", payWay=").append(payWay);
+        sb.append(", payment=").append(payment);
+        sb.append(", weight=").append(weight);
+        sb.append(", startTime=").append(startTime);
+        sb.append(", forwardArriveTime=").append(forwardArriveTime);
+        sb.append(", endTime=").append(endTime);
+        sb.append(", transferStaffId1=").append(transferStaffId1);
+        sb.append(", transferStaffId2=").append(transferStaffId2);
+        sb.append(", transferStaffId3=").append(transferStaffId3);
+        sb.append(", driverId=").append(driverId);
+        sb.append(", pickerId=").append(pickerId);
+        sb.append(", couierId=").append(couierId);
+        sb.append(", remark=").append(remark);
+        sb.append(", by1=").append(by1);
+        sb.append(", by2=").append(by2);
+        sb.append(", serialVersionUID=").append(serialVersionUID);
+        sb.append("]");
+        return sb.toString();
     }
 }
