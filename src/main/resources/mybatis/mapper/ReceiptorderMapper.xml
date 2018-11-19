@@ -178,4 +178,358 @@
       contract_id = #{contractId,jdbcType=VARCHAR}
     where rc_id = #{rcId,jdbcType=VARCHAR}
   </update>
+  <resultMap id="BaseResultMap" type="com.sixbang.logistics.domain.Receiptorder">
+    <id column="rc_id" jdbcType="VARCHAR" property="rcId" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
+    <result column="contract_id" jdbcType="VARCHAR" property="contractId" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    rc_id, state, contract_id
+  </sql>
+  <select id="selectByExample" parameterType="com.sixbang.logistics.domain.ReceiptorderExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from receipt_order
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from receipt_order
+    where rc_id = #{rcId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from receipt_order
+    where rc_id = #{rcId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sixbang.logistics.domain.ReceiptorderExample">
+    delete from receipt_order
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sixbang.logistics.domain.Receiptorder">
+    insert into receipt_order (rc_id, state, contract_id
+      )
+    values (#{rcId,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR}, #{contractId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.sixbang.logistics.domain.Receiptorder">
+    insert into receipt_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="rcId != null">
+        rc_id,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="contractId != null">
+        contract_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="rcId != null">
+        #{rcId,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="contractId != null">
+        #{contractId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sixbang.logistics.domain.ReceiptorderExample" resultType="java.lang.Long">
+    select count(*) from receipt_order
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update receipt_order
+    <set>
+      <if test="record.rcId != null">
+        rc_id = #{record.rcId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.state != null">
+        state = #{record.state,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contractId != null">
+        contract_id = #{record.contractId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update receipt_order
+    set rc_id = #{record.rcId,jdbcType=VARCHAR},
+      state = #{record.state,jdbcType=VARCHAR},
+      contract_id = #{record.contractId,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sixbang.logistics.domain.Receiptorder">
+    update receipt_order
+    <set>
+      <if test="state != null">
+        state = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="contractId != null">
+        contract_id = #{contractId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where rc_id = #{rcId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sixbang.logistics.domain.Receiptorder">
+    update receipt_order
+    set state = #{state,jdbcType=VARCHAR},
+      contract_id = #{contractId,jdbcType=VARCHAR}
+    where rc_id = #{rcId,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.sixbang.logistics.domain.Receiptorder">
+    <id column="rc_id" jdbcType="VARCHAR" property="rcId" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
+    <result column="contract_id" jdbcType="VARCHAR" property="contractId" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    rc_id, state, contract_id
+  </sql>
+  <select id="selectByExample" parameterType="com.sixbang.logistics.domain.ReceiptorderExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from receipt_order
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from receipt_order
+    where rc_id = #{rcId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from receipt_order
+    where rc_id = #{rcId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sixbang.logistics.domain.ReceiptorderExample">
+    delete from receipt_order
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sixbang.logistics.domain.Receiptorder">
+    insert into receipt_order (rc_id, state, contract_id
+      )
+    values (#{rcId,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR}, #{contractId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.sixbang.logistics.domain.Receiptorder">
+    insert into receipt_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="rcId != null">
+        rc_id,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="contractId != null">
+        contract_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="rcId != null">
+        #{rcId,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="contractId != null">
+        #{contractId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sixbang.logistics.domain.ReceiptorderExample" resultType="java.lang.Long">
+    select count(*) from receipt_order
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update receipt_order
+    <set>
+      <if test="record.rcId != null">
+        rc_id = #{record.rcId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.state != null">
+        state = #{record.state,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contractId != null">
+        contract_id = #{record.contractId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update receipt_order
+    set rc_id = #{record.rcId,jdbcType=VARCHAR},
+      state = #{record.state,jdbcType=VARCHAR},
+      contract_id = #{record.contractId,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sixbang.logistics.domain.Receiptorder">
+    update receipt_order
+    <set>
+      <if test="state != null">
+        state = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="contractId != null">
+        contract_id = #{contractId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where rc_id = #{rcId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sixbang.logistics.domain.Receiptorder">
+    update receipt_order
+    set state = #{state,jdbcType=VARCHAR},
+      contract_id = #{contractId,jdbcType=VARCHAR}
+    where rc_id = #{rcId,jdbcType=VARCHAR}
+  </update>
 </mapper>

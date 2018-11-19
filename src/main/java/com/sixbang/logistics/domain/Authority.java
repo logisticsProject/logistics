@@ -1,8 +1,6 @@
 package com.sixbang.logistics.domain;
 
-import java.io.Serializable;
-
-public class Authority implements Serializable {
+public class Authority {
     private Long id;
 
     private String name;
@@ -12,8 +10,6 @@ public class Authority implements Serializable {
     private String by1;
 
     private Long by2;
-
-    private static final long serialVersionUID = 1L;
 
     public Long getId() {
         return id;
@@ -53,21 +49,5 @@ public class Authority implements Serializable {
 
     public void setBy2(Long by2) {
         this.by2 = by2;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", name=").append(name);
-        sb.append(", descr=").append(descr);
-        sb.append(", by1=").append(by1);
-        sb.append(", by2=").append(by2);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
     }
 }

@@ -1,8 +1,6 @@
 package com.sixbang.logistics.domain;
 
-import java.io.Serializable;
-
-public class Employee implements Serializable {
+public class Employee {
     private Integer id;
 
     private String name;
@@ -12,8 +10,6 @@ public class Employee implements Serializable {
     private Integer roleId;
 
     private Integer carId;
-
-    private static final long serialVersionUID = 1L;
 
     public Integer getId() {
         return id;
@@ -53,21 +49,5 @@ public class Employee implements Serializable {
 
     public void setCarId(Integer carId) {
         this.carId = carId;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", name=").append(name);
-        sb.append(", workplace=").append(workplace);
-        sb.append(", roleId=").append(roleId);
-        sb.append(", carId=").append(carId);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
     }
 }

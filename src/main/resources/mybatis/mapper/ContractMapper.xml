@@ -178,4 +178,358 @@
       order_id = #{orderId,jdbcType=VARCHAR}
     where c_id = #{cId,jdbcType=VARCHAR}
   </update>
+  <resultMap id="BaseResultMap" type="com.sixbang.logistics.domain.Contract">
+    <id column="c_id" jdbcType="VARCHAR" property="cId" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
+    <result column="order_id" jdbcType="VARCHAR" property="orderId" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    c_id, state, order_id
+  </sql>
+  <select id="selectByExample" parameterType="com.sixbang.logistics.domain.ContractExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from contract
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from contract
+    where c_id = #{cId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from contract
+    where c_id = #{cId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sixbang.logistics.domain.ContractExample">
+    delete from contract
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sixbang.logistics.domain.Contract">
+    insert into contract (c_id, state, order_id
+      )
+    values (#{cId,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR}, #{orderId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.sixbang.logistics.domain.Contract">
+    insert into contract
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cId != null">
+        c_id,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="orderId != null">
+        order_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cId != null">
+        #{cId,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null">
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sixbang.logistics.domain.ContractExample" resultType="java.lang.Long">
+    select count(*) from contract
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update contract
+    <set>
+      <if test="record.cId != null">
+        c_id = #{record.cId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.state != null">
+        state = #{record.state,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderId != null">
+        order_id = #{record.orderId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update contract
+    set c_id = #{record.cId,jdbcType=VARCHAR},
+      state = #{record.state,jdbcType=VARCHAR},
+      order_id = #{record.orderId,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sixbang.logistics.domain.Contract">
+    update contract
+    <set>
+      <if test="state != null">
+        state = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null">
+        order_id = #{orderId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where c_id = #{cId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sixbang.logistics.domain.Contract">
+    update contract
+    set state = #{state,jdbcType=VARCHAR},
+      order_id = #{orderId,jdbcType=VARCHAR}
+    where c_id = #{cId,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.sixbang.logistics.domain.Contract">
+    <id column="c_id" jdbcType="VARCHAR" property="cId" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
+    <result column="order_id" jdbcType="VARCHAR" property="orderId" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    c_id, state, order_id
+  </sql>
+  <select id="selectByExample" parameterType="com.sixbang.logistics.domain.ContractExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from contract
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from contract
+    where c_id = #{cId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from contract
+    where c_id = #{cId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sixbang.logistics.domain.ContractExample">
+    delete from contract
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sixbang.logistics.domain.Contract">
+    insert into contract (c_id, state, order_id
+      )
+    values (#{cId,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR}, #{orderId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.sixbang.logistics.domain.Contract">
+    insert into contract
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cId != null">
+        c_id,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="orderId != null">
+        order_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cId != null">
+        #{cId,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null">
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sixbang.logistics.domain.ContractExample" resultType="java.lang.Long">
+    select count(*) from contract
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update contract
+    <set>
+      <if test="record.cId != null">
+        c_id = #{record.cId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.state != null">
+        state = #{record.state,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderId != null">
+        order_id = #{record.orderId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update contract
+    set c_id = #{record.cId,jdbcType=VARCHAR},
+      state = #{record.state,jdbcType=VARCHAR},
+      order_id = #{record.orderId,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sixbang.logistics.domain.Contract">
+    update contract
+    <set>
+      <if test="state != null">
+        state = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null">
+        order_id = #{orderId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where c_id = #{cId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sixbang.logistics.domain.Contract">
+    update contract
+    set state = #{state,jdbcType=VARCHAR},
+      order_id = #{orderId,jdbcType=VARCHAR}
+    where c_id = #{cId,jdbcType=VARCHAR}
+  </update>
 </mapper>

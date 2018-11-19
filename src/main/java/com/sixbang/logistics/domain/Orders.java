@@ -1,9 +1,8 @@
 package com.sixbang.logistics.domain;
 
-import java.io.Serializable;
 import java.util.Date;
 
-public class Orders implements Serializable {
+public class Orders {
     private Integer id;
 
     private Integer sendorId;
@@ -22,29 +21,37 @@ public class Orders implements Serializable {
 
     private Date startTime;
 
+    private Date fillDate;
+
     private Date forwardArriveTime;
 
     private Date endTime;
 
-    private Integer transferStaffId1;
-
-    private Integer transferStaffId2;
-
-    private Integer transferStaffId3;
-
     private Integer driverId;
 
-    private Integer pickerId;
+    private Double receivablesRate;
 
-    private Integer couierId;
+    private Double receivables;
+
+    private Double subtraction;
+
+    private Integer staffId;
+
+    private Double deliveryFee;
 
     private String remark;
+
+    private Double insurance;
 
     private Integer by1;
 
     private String by2;
 
-    private static final long serialVersionUID = 1L;
+    private Integer number;
+
+    private Double volume;
+
+    private Double goodsValue;
 
     public Integer getId() {
         return id;
@@ -118,6 +125,14 @@ public class Orders implements Serializable {
         this.startTime = startTime;
     }
 
+    public Date getFillDate() {
+        return fillDate;
+    }
+
+    public void setFillDate(Date fillDate) {
+        this.fillDate = fillDate;
+    }
+
     public Date getForwardArriveTime() {
         return forwardArriveTime;
     }
@@ -134,30 +149,6 @@ public class Orders implements Serializable {
         this.endTime = endTime;
     }
 
-    public Integer getTransferStaffId1() {
-        return transferStaffId1;
-    }
-
-    public void setTransferStaffId1(Integer transferStaffId1) {
-        this.transferStaffId1 = transferStaffId1;
-    }
-
-    public Integer getTransferStaffId2() {
-        return transferStaffId2;
-    }
-
-    public void setTransferStaffId2(Integer transferStaffId2) {
-        this.transferStaffId2 = transferStaffId2;
-    }
-
-    public Integer getTransferStaffId3() {
-        return transferStaffId3;
-    }
-
-    public void setTransferStaffId3(Integer transferStaffId3) {
-        this.transferStaffId3 = transferStaffId3;
-    }
-
     public Integer getDriverId() {
         return driverId;
     }
@@ -166,20 +157,44 @@ public class Orders implements Serializable {
         this.driverId = driverId;
     }
 
-    public Integer getPickerId() {
-        return pickerId;
+    public Double getReceivablesRate() {
+        return receivablesRate;
     }
 
-    public void setPickerId(Integer pickerId) {
-        this.pickerId = pickerId;
+    public void setReceivablesRate(Double receivablesRate) {
+        this.receivablesRate = receivablesRate;
     }
 
-    public Integer getCouierId() {
-        return couierId;
+    public Double getReceivables() {
+        return receivables;
     }
 
-    public void setCouierId(Integer couierId) {
-        this.couierId = couierId;
+    public void setReceivables(Double receivables) {
+        this.receivables = receivables;
+    }
+
+    public Double getSubtraction() {
+        return subtraction;
+    }
+
+    public void setSubtraction(Double subtraction) {
+        this.subtraction = subtraction;
+    }
+
+    public Integer getStaffId() {
+        return staffId;
+    }
+
+    public void setStaffId(Integer staffId) {
+        this.staffId = staffId;
+    }
+
+    public Double getDeliveryFee() {
+        return deliveryFee;
+    }
+
+    public void setDeliveryFee(Double deliveryFee) {
+        this.deliveryFee = deliveryFee;
     }
 
     public String getRemark() {
@@ -188,6 +203,14 @@ public class Orders implements Serializable {
 
     public void setRemark(String remark) {
         this.remark = remark == null ? null : remark.trim();
+    }
+
+    public Double getInsurance() {
+        return insurance;
+    }
+
+    public void setInsurance(Double insurance) {
+        this.insurance = insurance;
     }
 
     public Integer getBy1() {
@@ -206,34 +229,27 @@ public class Orders implements Serializable {
         this.by2 = by2 == null ? null : by2.trim();
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", sendorId=").append(sendorId);
-        sb.append(", receiverId=").append(receiverId);
-        sb.append(", stateId=").append(stateId);
-        sb.append(", ispayed=").append(ispayed);
-        sb.append(", payWay=").append(payWay);
-        sb.append(", payment=").append(payment);
-        sb.append(", weight=").append(weight);
-        sb.append(", startTime=").append(startTime);
-        sb.append(", forwardArriveTime=").append(forwardArriveTime);
-        sb.append(", endTime=").append(endTime);
-        sb.append(", transferStaffId1=").append(transferStaffId1);
-        sb.append(", transferStaffId2=").append(transferStaffId2);
-        sb.append(", transferStaffId3=").append(transferStaffId3);
-        sb.append(", driverId=").append(driverId);
-        sb.append(", pickerId=").append(pickerId);
-        sb.append(", couierId=").append(couierId);
-        sb.append(", remark=").append(remark);
-        sb.append(", by1=").append(by1);
-        sb.append(", by2=").append(by2);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
+    public Integer getNumber() {
+        return number;
+    }
+
+    public void setNumber(Integer number) {
+        this.number = number;
+    }
+
+    public Double getVolume() {
+        return volume;
+    }
+
+    public void setVolume(Double volume) {
+        this.volume = volume;
+    }
+
+    public Double getGoodsValue() {
+        return goodsValue;
+    }
+
+    public void setGoodsValue(Double goodsValue) {
+        this.goodsValue = goodsValue;
     }
 }
