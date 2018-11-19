@@ -6,8 +6,8 @@
 <generatorConfiguration>
     <properties resource="jdbc.properties"/>
     <!-- 本地数据库驱动程序jar包的全路径 -->
-    <classPathEntry location="D:\Maven\repo\mysql\mysql-connector-java\5.1.30\mysql-connector-java-5.1.30.jar"/>
-
+    <!--<classPathEntry location="D:\Maven\repo\mysql\mysql-connector-java\5.1.30\mysql-connector-java-5.1.30.jar"/>
+-->
     <context id="context" targetRuntime="MyBatis3">
         <!-- 自动识别数据库关键字，默认false，如果设置为true，根据SqlReservedWords中定义的关键字列表；
            一般保留默认值，遇到数据库关键字（Java关键字），使用columnOverride覆盖
