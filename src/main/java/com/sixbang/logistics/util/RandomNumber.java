@@ -11,6 +11,7 @@ public class RandomNumber {
 
     /**
      * 生成订单号
+     *
      * @return 返回 Sting 类型的流水账号
      */
     public static String getLiuShuiId() {
