@@ -2,23 +2,21 @@ package com.sixbang.logistics.domain;
 
 import java.io.Serializable;
 
-public class Waybills implements Serializable {
-    private Integer wId;
+public class ReceiptOrder implements Serializable {
+    private String rcId;
 
     private String state;
 
-    private String byte1;
-
-    private Integer byte2;
+    private String contractId;
 
     private static final long serialVersionUID = 1L;
 
-    public Integer getwId() {
-        return wId;
+    public String getRcId() {
+        return rcId;
     }
 
-    public void setwId(Integer wId) {
-        this.wId = wId;
+    public void setRcId(String rcId) {
+        this.rcId = rcId == null ? null : rcId.trim();
     }
 
     public String getState() {
@@ -29,20 +27,12 @@ public class Waybills implements Serializable {
         this.state = state == null ? null : state.trim();
     }
 
-    public String getByte1() {
-        return byte1;
+    public String getContractId() {
+        return contractId;
     }
 
-    public void setByte1(String byte1) {
-        this.byte1 = byte1 == null ? null : byte1.trim();
-    }
-
-    public Integer getByte2() {
-        return byte2;
-    }
-
-    public void setByte2(Integer byte2) {
-        this.byte2 = byte2;
+    public void setContractId(String contractId) {
+        this.contractId = contractId == null ? null : contractId.trim();
     }
 
     @Override
@@ -51,10 +41,9 @@ public class Waybills implements Serializable {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", wId=").append(wId);
+        sb.append(", rcId=").append(rcId);
         sb.append(", state=").append(state);
-        sb.append(", byte1=").append(byte1);
-        sb.append(", byte2=").append(byte2);
+        sb.append(", contractId=").append(contractId);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();
