@@ -10,9 +10,8 @@ public class RandomNumber {
     private static Random random = new Random();
 
     /**
-     * 流水账单的信息
-     *
-     * @return 返回流水账号
+     * 生成订单号
+     * @return 返回 Sting 类型的流水账号
      */
     public static String getLiuShuiId() {
         String str = null;
