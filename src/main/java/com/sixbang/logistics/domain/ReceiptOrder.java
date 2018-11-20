@@ -4,13 +4,52 @@ import java.io.Serializable;
 
 public class ReceiptOrder implements Serializable {
     private Integer rcId;
-    //12ss
 
     private String numbering;
 
     private String state;
 
     private String contractId;
+
+    private Contract contract;
+
+    private Orders orders;
+
+    private Sender sender;
+
+    private Recipient recipient;
+
+    public Contract getContract() {
+        return contract;
+    }
+
+    public void setContract(Contract contract) {
+        this.contract = contract;
+    }
+
+    public Orders getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Orders orders) {
+        this.orders = orders;
+    }
+
+    public Sender getSender() {
+        return sender;
+    }
+
+    public void setSender(Sender sender) {
+        this.sender = sender;
+    }
+
+    public Recipient getRecipient() {
+        return recipient;
+    }
+
+    public void setRecipient(Recipient recipient) {
+        this.recipient = recipient;
+    }
 
     private static final long serialVersionUID = 1L;
 
