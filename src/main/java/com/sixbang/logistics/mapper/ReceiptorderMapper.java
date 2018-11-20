@@ -6,6 +6,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface ReceiptorderMapper {
+
+    //11
     long countByExample(ReceiptorderExample example);
 
     int deleteByExample(ReceiptorderExample example);
