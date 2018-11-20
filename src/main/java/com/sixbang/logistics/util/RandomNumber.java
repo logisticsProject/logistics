@@ -22,4 +22,39 @@ public class RandomNumber {
         return str;
     }
 
+    /**
+     * 司机编号
+     * @return
+     */
+    public static String getDriverid(){
+        String str = null;
+        int num = random.nextInt(100000)+100000;
+        str = "S-"+num;
+        return str;
+    }
+
+    /**
+     * 收发货人编号
+     * @return
+     */
+    public static String getReceiver(){
+        String str = null;
+        int num = random.nextInt(100000)+100000;
+        str = "M-"+num;
+        return str;
+    }
+
+    /**
+     * 职员编号
+     * @return
+     */
+    public static String getStadd(){
+        String str = null;
+        int num = random.nextInt(100000)+100000;
+        str = "Z-"+num;
+        return str;
+    }
+
+
+
 }
