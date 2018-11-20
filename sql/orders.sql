@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50718
 File Encoding         : 65001
 
-Date: 2018-11-19 15:37:16
+Date: 2018-11-20 09:41:31
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -20,6 +20,7 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `orders`;
 CREATE TABLE `orders` (
+  `numberring` varchar(30) DEFAULT NULL COMMENT '订单编号',
   `id` int(20) NOT NULL AUTO_INCREMENT,
   `sendor_id` int(10) DEFAULT NULL COMMENT '发件人',
   `receiver_id` int(10) DEFAULT NULL COMMENT '收件人',
@@ -42,7 +43,7 @@ CREATE TABLE `orders` (
   `insurance` double(50,0) DEFAULT NULL COMMENT '保险费',
   `by1` int(20) DEFAULT NULL,
   `by2` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
-  `number` int(50) DEFAULT NULL COMMENT '件数',
+  `amouet` int(50) DEFAULT NULL COMMENT '件数',
   `volume` double(50,0) DEFAULT NULL COMMENT '体积',
   `goods_value` double(50,0) DEFAULT NULL COMMENT '货物价值',
   PRIMARY KEY (`id`)
@@ -51,4 +52,4 @@ CREATE TABLE `orders` (
 -- ----------------------------
 -- Records of orders
 -- ----------------------------
-INSERT INTO `orders` VALUES ('1', '1', '1', '1', '0', '0', '100.00', '50.00', '2018-11-04 14:45:21', null, '2018-11-07 14:45:25', '2018-11-07 14:45:33', null, null, null, null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `orders` VALUES (null, '1', '1', '1', '1', '0', '0', '100.00', '50.00', '2018-11-04 14:45:21', null, '2018-11-07 14:45:25', '2018-11-07 14:45:33', null, null, null, null, null, null, null, null, null, null, null, null, null);

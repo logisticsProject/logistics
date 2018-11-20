@@ -1,26 +1,26 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : MySQL
-Source Server Version : 80011
-Source Host           : localhost:3306
+Source Server         : 127.0.0.1_3306
+Source Server Version : 50718
+Source Host           : 127.0.0.1:3306
 Source Database       : logistics
 
 Target Server Type    : MYSQL
-Target Server Version : 80011
+Target Server Version : 50718
 File Encoding         : 65001
 
-Date: 2018-11-18 16:10:14
+Date: 2018-11-20 09:41:35
 */
 
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
--- Table structure for `path`
+-- Table structure for path
 -- ----------------------------
 DROP TABLE IF EXISTS `path`;
 CREATE TABLE `path` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '路线id',
   `startplace` varchar(11) NOT NULL COMMENT '起始地',
   `endplace` varchar(11) NOT NULL COMMENT '终止地',
   `priceperunit` double DEFAULT NULL COMMENT '单价',

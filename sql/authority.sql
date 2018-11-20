@@ -1,22 +1,22 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : MySQL
-Source Server Version : 80011
-Source Host           : localhost:3306
+Source Server         : 127.0.0.1_3306
+Source Server Version : 50718
+Source Host           : 127.0.0.1:3306
 Source Database       : logistics
 
 Target Server Type    : MYSQL
-Target Server Version : 80011
+Target Server Version : 50718
 File Encoding         : 65001
 
-Date: 2018-11-18 16:09:36
+Date: 2018-11-20 09:41:07
 */
 
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
--- Table structure for `authority`
+-- Table structure for authority
 -- ----------------------------
 DROP TABLE IF EXISTS `authority`;
 CREATE TABLE `authority` (
