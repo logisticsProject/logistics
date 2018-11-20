@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class ReceiptOrder implements Serializable {
     private Integer rcId;
+    //12ss
 
     private String numbering;
 
