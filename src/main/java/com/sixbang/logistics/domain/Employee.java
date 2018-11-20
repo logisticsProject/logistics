@@ -1,6 +1,8 @@
 package com.sixbang.logistics.domain;
 
 public class Employee {
+    private String numbering;
+
     private Integer id;
 
     private String name;
@@ -10,6 +12,14 @@ public class Employee {
     private Integer roleId;
 
     private Integer carId;
+
+    public String getNumbering() {
+        return numbering;
+    }
+
+    public void setNumbering(String numbering) {
+        this.numbering = numbering == null ? null : numbering.trim();
+    }
 
     public Integer getId() {
         return id;

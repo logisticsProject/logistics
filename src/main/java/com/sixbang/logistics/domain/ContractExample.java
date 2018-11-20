@@ -104,6 +104,76 @@ public class ContractExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
+        public Criteria andNumberingIsNull() {
+            addCriterion("numbering is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberingIsNotNull() {
+            addCriterion("numbering is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberingEqualTo(String value) {
+            addCriterion("numbering =", value, "numbering");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberingNotEqualTo(String value) {
+            addCriterion("numbering <>", value, "numbering");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberingGreaterThan(String value) {
+            addCriterion("numbering >", value, "numbering");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberingGreaterThanOrEqualTo(String value) {
+            addCriterion("numbering >=", value, "numbering");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberingLessThan(String value) {
+            addCriterion("numbering <", value, "numbering");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberingLessThanOrEqualTo(String value) {
+            addCriterion("numbering <=", value, "numbering");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberingLike(String value) {
+            addCriterion("numbering like", value, "numbering");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberingNotLike(String value) {
+            addCriterion("numbering not like", value, "numbering");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberingIn(List<String> values) {
+            addCriterion("numbering in", values, "numbering");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberingNotIn(List<String> values) {
+            addCriterion("numbering not in", values, "numbering");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberingBetween(String value1, String value2) {
+            addCriterion("numbering between", value1, value2, "numbering");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberingNotBetween(String value1, String value2) {
+            addCriterion("numbering not between", value1, value2, "numbering");
+            return (Criteria) this;
+        }
+
         public Criteria andCIdIsNull() {
             addCriterion("c_id is null");
             return (Criteria) this;
@@ -114,62 +184,52 @@ public class ContractExample {
             return (Criteria) this;
         }
 
-        public Criteria andCIdEqualTo(String value) {
+        public Criteria andCIdEqualTo(Integer value) {
             addCriterion("c_id =", value, "cId");
             return (Criteria) this;
         }
 
-        public Criteria andCIdNotEqualTo(String value) {
+        public Criteria andCIdNotEqualTo(Integer value) {
             addCriterion("c_id <>", value, "cId");
             return (Criteria) this;
         }
 
-        public Criteria andCIdGreaterThan(String value) {
+        public Criteria andCIdGreaterThan(Integer value) {
             addCriterion("c_id >", value, "cId");
             return (Criteria) this;
         }
 
-        public Criteria andCIdGreaterThanOrEqualTo(String value) {
+        public Criteria andCIdGreaterThanOrEqualTo(Integer value) {
             addCriterion("c_id >=", value, "cId");
             return (Criteria) this;
         }
 
-        public Criteria andCIdLessThan(String value) {
+        public Criteria andCIdLessThan(Integer value) {
             addCriterion("c_id <", value, "cId");
             return (Criteria) this;
         }
 
-        public Criteria andCIdLessThanOrEqualTo(String value) {
+        public Criteria andCIdLessThanOrEqualTo(Integer value) {
             addCriterion("c_id <=", value, "cId");
             return (Criteria) this;
         }
 
-        public Criteria andCIdLike(String value) {
-            addCriterion("c_id like", value, "cId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCIdNotLike(String value) {
-            addCriterion("c_id not like", value, "cId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCIdIn(List<String> values) {
+        public Criteria andCIdIn(List<Integer> values) {
             addCriterion("c_id in", values, "cId");
             return (Criteria) this;
         }
 
-        public Criteria andCIdNotIn(List<String> values) {
+        public Criteria andCIdNotIn(List<Integer> values) {
             addCriterion("c_id not in", values, "cId");
             return (Criteria) this;
         }
 
-        public Criteria andCIdBetween(String value1, String value2) {
+        public Criteria andCIdBetween(Integer value1, Integer value2) {
             addCriterion("c_id between", value1, value2, "cId");
             return (Criteria) this;
         }
 
-        public Criteria andCIdNotBetween(String value1, String value2) {
+        public Criteria andCIdNotBetween(Integer value1, Integer value2) {
             addCriterion("c_id not between", value1, value2, "cId");
             return (Criteria) this;
         }
