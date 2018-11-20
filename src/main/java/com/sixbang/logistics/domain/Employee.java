@@ -1,9 +1,11 @@
 package com.sixbang.logistics.domain;
 
-public class Employee {
-    private String numbering;
+import java.io.Serializable;
 
+public class Employee implements Serializable {
     private Integer id;
+
+    private String numbering;
 
     private String name;
 
@@ -13,13 +15,7 @@ public class Employee {
 
     private Integer carId;
 
-    public String getNumbering() {
-        return numbering;
-    }
-
-    public void setNumbering(String numbering) {
-        this.numbering = numbering == null ? null : numbering.trim();
-    }
+    private static final long serialVersionUID = 1L;
 
     public Integer getId() {
         return id;
@@ -27,6 +23,14 @@ public class Employee {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getNumbering() {
+        return numbering;
+    }
+
+    public void setNumbering(String numbering) {
+        this.numbering = numbering == null ? null : numbering.trim();
     }
 
     public String getName() {
@@ -59,5 +63,22 @@ public class Employee {
 
     public void setCarId(Integer carId) {
         this.carId = carId;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", id=").append(id);
+        sb.append(", numbering=").append(numbering);
+        sb.append(", name=").append(name);
+        sb.append(", workplace=").append(workplace);
+        sb.append(", roleId=").append(roleId);
+        sb.append(", carId=").append(carId);
+        sb.append(", serialVersionUID=").append(serialVersionUID);
+        sb.append("]");
+        return sb.toString();
     }
 }

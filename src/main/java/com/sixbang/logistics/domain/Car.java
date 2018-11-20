@@ -1,21 +1,17 @@
 package com.sixbang.logistics.domain;
 
-public class Car {
-    private String numberring;
+import java.io.Serializable;
 
+public class Car implements Serializable {
     private Integer id;
+
+    private String numberring;
 
     private String licensePlate;
 
     private String routeId;
 
-    public String getNumberring() {
-        return numberring;
-    }
-
-    public void setNumberring(String numberring) {
-        this.numberring = numberring == null ? null : numberring.trim();
-    }
+    private static final long serialVersionUID = 1L;
 
     public Integer getId() {
         return id;
@@ -23,6 +19,14 @@ public class Car {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getNumberring() {
+        return numberring;
+    }
+
+    public void setNumberring(String numberring) {
+        this.numberring = numberring == null ? null : numberring.trim();
     }
 
     public String getLicensePlate() {
@@ -39,5 +43,20 @@ public class Car {
 
     public void setRouteId(String routeId) {
         this.routeId = routeId == null ? null : routeId.trim();
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", id=").append(id);
+        sb.append(", numberring=").append(numberring);
+        sb.append(", licensePlate=").append(licensePlate);
+        sb.append(", routeId=").append(routeId);
+        sb.append(", serialVersionUID=").append(serialVersionUID);
+        sb.append("]");
+        return sb.toString();
     }
 }

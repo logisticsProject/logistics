@@ -1,22 +1,16 @@
 package com.sixbang.logistics.mapper;
 
 import com.sixbang.logistics.domain.Employee;
-import com.sixbang.logistics.domain.EmployeeExample;
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
 public interface EmployeeMapper {
-    long countByExample(EmployeeExample example);
-
-    int deleteByExample(EmployeeExample example);
+    int deleteByPrimaryKey(Integer id);
 
     int insert(Employee record);
 
-    int insertSelective(Employee record);
+    Employee selectByPrimaryKey(Integer id);
 
-    List<Employee> selectByExample(EmployeeExample example);
+    List<Employee> selectAll();
 
-    int updateByExampleSelective(@Param("record") Employee record, @Param("example") EmployeeExample example);
-
-    int updateByExample(@Param("record") Employee record, @Param("example") EmployeeExample example);
+    int updateByPrimaryKey(Employee record);
 }

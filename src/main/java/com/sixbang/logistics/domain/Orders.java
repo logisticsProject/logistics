@@ -1,12 +1,12 @@
 package com.sixbang.logistics.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Orders {
-    //订单编号
-    private String numberring;
-
+public class Orders implements Serializable {
     private Integer id;
+
+    private String numberring;
 
     private Integer sendorId;
 
@@ -56,13 +56,7 @@ public class Orders {
 
     private Double goodsValue;
 
-    public String getNumberring() {
-        return numberring;
-    }
-
-    public void setNumberring(String numberring) {
-        this.numberring = numberring == null ? null : numberring.trim();
-    }
+    private static final long serialVersionUID = 1L;
 
     public Integer getId() {
         return id;
@@ -70,6 +64,14 @@ public class Orders {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getNumberring() {
+        return numberring;
+    }
+
+    public void setNumberring(String numberring) {
+        this.numberring = numberring == null ? null : numberring.trim();
     }
 
     public Integer getSendorId() {
@@ -262,5 +264,42 @@ public class Orders {
 
     public void setGoodsValue(Double goodsValue) {
         this.goodsValue = goodsValue;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", id=").append(id);
+        sb.append(", numberring=").append(numberring);
+        sb.append(", sendorId=").append(sendorId);
+        sb.append(", receiverId=").append(receiverId);
+        sb.append(", stateId=").append(stateId);
+        sb.append(", ispayed=").append(ispayed);
+        sb.append(", payWay=").append(payWay);
+        sb.append(", payment=").append(payment);
+        sb.append(", weight=").append(weight);
+        sb.append(", startTime=").append(startTime);
+        sb.append(", fillDate=").append(fillDate);
+        sb.append(", forwardArriveTime=").append(forwardArriveTime);
+        sb.append(", endTime=").append(endTime);
+        sb.append(", driverId=").append(driverId);
+        sb.append(", receivablesRate=").append(receivablesRate);
+        sb.append(", receivables=").append(receivables);
+        sb.append(", subtraction=").append(subtraction);
+        sb.append(", staffId=").append(staffId);
+        sb.append(", deliveryFee=").append(deliveryFee);
+        sb.append(", remark=").append(remark);
+        sb.append(", insurance=").append(insurance);
+        sb.append(", by1=").append(by1);
+        sb.append(", by2=").append(by2);
+        sb.append(", amouet=").append(amouet);
+        sb.append(", volume=").append(volume);
+        sb.append(", goodsValue=").append(goodsValue);
+        sb.append(", serialVersionUID=").append(serialVersionUID);
+        sb.append("]");
+        return sb.toString();
     }
 }
