@@ -1,9 +1,9 @@
 package com.sixbang.logistics.domain;
 
 public class Employee {
-    private String numbering;
-
     private Integer id;
+
+    private String numbering;
 
     private String name;
 
@@ -13,20 +13,20 @@ public class Employee {
 
     private Integer carId;
 
-    public String getNumbering() {
-        return numbering;
-    }
-
-    public void setNumbering(String numbering) {
-        this.numbering = numbering == null ? null : numbering.trim();
-    }
-
     public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getNumbering() {
+        return numbering;
+    }
+
+    public void setNumbering(String numbering) {
+        this.numbering = numbering == null ? null : numbering.trim();
     }
 
     public String getName() {

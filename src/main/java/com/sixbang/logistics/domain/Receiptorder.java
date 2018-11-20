@@ -1,21 +1,13 @@
 package com.sixbang.logistics.domain;
 
 public class Receiptorder {
-    private String numbering;
-
     private Integer rcId;
+
+    private String numbering;
 
     private String state;
 
     private String contractId;
-
-    public String getNumbering() {
-        return numbering;
-    }
-
-    public void setNumbering(String numbering) {
-        this.numbering = numbering == null ? null : numbering.trim();
-    }
 
     public Integer getRcId() {
         return rcId;
@@ -23,6 +15,14 @@ public class Receiptorder {
 
     public void setRcId(Integer rcId) {
         this.rcId = rcId;
+    }
+
+    public String getNumbering() {
+        return numbering;
+    }
+
+    public void setNumbering(String numbering) {
+        this.numbering = numbering == null ? null : numbering.trim();
     }
 
     public String getState() {

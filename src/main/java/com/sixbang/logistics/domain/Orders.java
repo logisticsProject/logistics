@@ -3,10 +3,9 @@ package com.sixbang.logistics.domain;
 import java.util.Date;
 
 public class Orders {
-    //订单编号
-    private String numberring;
-
     private Integer id;
+
+    private String numberring;
 
     private Integer sendorId;
 
@@ -56,20 +55,20 @@ public class Orders {
 
     private Double goodsValue;
 
-    public String getNumberring() {
-        return numberring;
-    }
-
-    public void setNumberring(String numberring) {
-        this.numberring = numberring == null ? null : numberring.trim();
-    }
-
     public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getNumberring() {
+        return numberring;
+    }
+
+    public void setNumberring(String numberring) {
+        this.numberring = numberring == null ? null : numberring.trim();
     }
 
     public Integer getSendorId() {

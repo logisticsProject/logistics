@@ -10,13 +10,21 @@ public interface WaybillsMapper {
 
     int deleteByExample(WaybillsExample example);
 
+    int deleteByPrimaryKey(Integer wId);
+
     int insert(Waybills record);
 
     int insertSelective(Waybills record);
 
     List<Waybills> selectByExample(WaybillsExample example);
 
+    Waybills selectByPrimaryKey(Integer wId);
+
     int updateByExampleSelective(@Param("record") Waybills record, @Param("example") WaybillsExample example);
 
     int updateByExample(@Param("record") Waybills record, @Param("example") WaybillsExample example);
+
+    int updateByPrimaryKeySelective(Waybills record);
+
+    int updateByPrimaryKey(Waybills record);
 }
