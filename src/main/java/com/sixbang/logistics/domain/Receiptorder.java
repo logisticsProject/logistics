@@ -3,6 +3,8 @@ package com.sixbang.logistics.domain;
 public class Receiptorder {
     private Integer rcId;
 
+
+
     private String numbering;
 
     private String state;
