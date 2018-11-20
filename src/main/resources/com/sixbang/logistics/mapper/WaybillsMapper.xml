@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sixbang.logistics.mapper.WaybillsMapper">
+  <resultMap id="BaseResultMap" type="com.sixbang.logistics.domain.Waybills">
+    <id column="w_id" jdbcType="INTEGER" property="wId" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
+    <result column="byte1" jdbcType="VARCHAR" property="byte1" />
+    <result column="byte2" jdbcType="INTEGER" property="byte2" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from waybills
+    where w_id = #{wId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.sixbang.logistics.domain.Waybills">
+    insert into waybills (w_id, `state`, byte1, 
+      byte2)
+    values (#{wId,jdbcType=INTEGER}, #{state,jdbcType=VARCHAR}, #{byte1,jdbcType=VARCHAR}, 
+      #{byte2,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.sixbang.logistics.domain.Waybills">
+    update waybills
+    set `state` = #{state,jdbcType=VARCHAR},
+      byte1 = #{byte1,jdbcType=VARCHAR},
+      byte2 = #{byte2,jdbcType=INTEGER}
+    where w_id = #{wId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select w_id, `state`, byte1, byte2
+    from waybills
+    where w_id = #{wId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select w_id, `state`, byte1, byte2
+    from waybills
+  </select>
+</mapper>

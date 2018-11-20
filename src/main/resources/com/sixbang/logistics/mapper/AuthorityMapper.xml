@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sixbang.logistics.mapper.AuthorityMapper">
+  <resultMap id="BaseResultMap" type="com.sixbang.logistics.domain.Authority">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="descr" jdbcType="VARCHAR" property="descr" />
+    <result column="by1" jdbcType="VARCHAR" property="by1" />
+    <result column="by2" jdbcType="BIGINT" property="by2" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from authority
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.sixbang.logistics.domain.Authority">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into authority (`name`, descr, by1, 
+      by2)
+    values (#{name,jdbcType=VARCHAR}, #{descr,jdbcType=VARCHAR}, #{by1,jdbcType=VARCHAR}, 
+      #{by2,jdbcType=BIGINT})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.sixbang.logistics.domain.Authority">
+    update authority
+    set `name` = #{name,jdbcType=VARCHAR},
+      descr = #{descr,jdbcType=VARCHAR},
+      by1 = #{by1,jdbcType=VARCHAR},
+      by2 = #{by2,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select id, `name`, descr, by1, by2
+    from authority
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, `name`, descr, by1, by2
+    from authority
+  </select>
+</mapper>
