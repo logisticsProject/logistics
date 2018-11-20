@@ -35,4 +35,38 @@
     select rid, numbering, rname, rphone, raddress
     from recipient
   </select>
+  <resultMap id="BaseResultMap" type="com.sixbang.logistics.domain.Recipient">
+    <id column="rid" jdbcType="INTEGER" property="rid" />
+    <result column="numbering" jdbcType="VARCHAR" property="numbering" />
+    <result column="rname" jdbcType="VARCHAR" property="rname" />
+    <result column="rphone" jdbcType="VARCHAR" property="rphone" />
+    <result column="raddress" jdbcType="VARCHAR" property="raddress" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from recipient
+    where rid = #{rid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.sixbang.logistics.domain.Recipient">
+    insert into recipient (rid, numbering, rname, 
+      rphone, raddress)
+    values (#{rid,jdbcType=INTEGER}, #{numbering,jdbcType=VARCHAR}, #{rname,jdbcType=VARCHAR}, 
+      #{rphone,jdbcType=VARCHAR}, #{raddress,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.sixbang.logistics.domain.Recipient">
+    update recipient
+    set numbering = #{numbering,jdbcType=VARCHAR},
+      rname = #{rname,jdbcType=VARCHAR},
+      rphone = #{rphone,jdbcType=VARCHAR},
+      raddress = #{raddress,jdbcType=VARCHAR}
+    where rid = #{rid,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select rid, numbering, rname, rphone, raddress
+    from recipient
+    where rid = #{rid,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select rid, numbering, rname, rphone, raddress
+    from recipient
+  </select>
 </mapper>

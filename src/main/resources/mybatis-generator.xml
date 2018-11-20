@@ -63,7 +63,7 @@
            </table>
         <table tableName="path" domainObjectName="Path">
            </table>
-        <table tableName="receipt_order" domainObjectName="Receiptorder">
+        <table tableName="receipt_order" domainObjectName="ReceiptOrder">
           </table>
         <table tableName="recipient" domainObjectName="Recipient">
             </table>

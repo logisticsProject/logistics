@@ -33,4 +33,36 @@
     select c_id, numbering, state, order_id
     from contract
   </select>
+  <resultMap id="BaseResultMap" type="com.sixbang.logistics.domain.Contract">
+    <id column="c_id" jdbcType="INTEGER" property="cId" />
+    <result column="numbering" jdbcType="VARCHAR" property="numbering" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
+    <result column="order_id" jdbcType="VARCHAR" property="orderId" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from contract
+    where c_id = #{cId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.sixbang.logistics.domain.Contract">
+    insert into contract (c_id, numbering, state, 
+      order_id)
+    values (#{cId,jdbcType=INTEGER}, #{numbering,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR}, 
+      #{orderId,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.sixbang.logistics.domain.Contract">
+    update contract
+    set numbering = #{numbering,jdbcType=VARCHAR},
+      state = #{state,jdbcType=VARCHAR},
+      order_id = #{orderId,jdbcType=VARCHAR}
+    where c_id = #{cId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select c_id, numbering, state, order_id
+    from contract
+    where c_id = #{cId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select c_id, numbering, state, order_id
+    from contract
+  </select>
 </mapper>
