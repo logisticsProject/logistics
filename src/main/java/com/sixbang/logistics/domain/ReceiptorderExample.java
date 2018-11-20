@@ -104,66 +104,6 @@ public class ReceiptorderExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andRcIdIsNull() {
-            addCriterion("rc_id is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andRcIdIsNotNull() {
-            addCriterion("rc_id is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andRcIdEqualTo(Integer value) {
-            addCriterion("rc_id =", value, "rcId");
-            return (Criteria) this;
-        }
-
-        public Criteria andRcIdNotEqualTo(Integer value) {
-            addCriterion("rc_id <>", value, "rcId");
-            return (Criteria) this;
-        }
-
-        public Criteria andRcIdGreaterThan(Integer value) {
-            addCriterion("rc_id >", value, "rcId");
-            return (Criteria) this;
-        }
-
-        public Criteria andRcIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("rc_id >=", value, "rcId");
-            return (Criteria) this;
-        }
-
-        public Criteria andRcIdLessThan(Integer value) {
-            addCriterion("rc_id <", value, "rcId");
-            return (Criteria) this;
-        }
-
-        public Criteria andRcIdLessThanOrEqualTo(Integer value) {
-            addCriterion("rc_id <=", value, "rcId");
-            return (Criteria) this;
-        }
-
-        public Criteria andRcIdIn(List<Integer> values) {
-            addCriterion("rc_id in", values, "rcId");
-            return (Criteria) this;
-        }
-
-        public Criteria andRcIdNotIn(List<Integer> values) {
-            addCriterion("rc_id not in", values, "rcId");
-            return (Criteria) this;
-        }
-
-        public Criteria andRcIdBetween(Integer value1, Integer value2) {
-            addCriterion("rc_id between", value1, value2, "rcId");
-            return (Criteria) this;
-        }
-
-        public Criteria andRcIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("rc_id not between", value1, value2, "rcId");
-            return (Criteria) this;
-        }
-
         public Criteria andNumberingIsNull() {
             addCriterion("numbering is null");
             return (Criteria) this;
@@ -231,6 +171,66 @@ public class ReceiptorderExample {
 
         public Criteria andNumberingNotBetween(String value1, String value2) {
             addCriterion("numbering not between", value1, value2, "numbering");
+            return (Criteria) this;
+        }
+
+        public Criteria andRcIdIsNull() {
+            addCriterion("rc_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRcIdIsNotNull() {
+            addCriterion("rc_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRcIdEqualTo(Integer value) {
+            addCriterion("rc_id =", value, "rcId");
+            return (Criteria) this;
+        }
+
+        public Criteria andRcIdNotEqualTo(Integer value) {
+            addCriterion("rc_id <>", value, "rcId");
+            return (Criteria) this;
+        }
+
+        public Criteria andRcIdGreaterThan(Integer value) {
+            addCriterion("rc_id >", value, "rcId");
+            return (Criteria) this;
+        }
+
+        public Criteria andRcIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("rc_id >=", value, "rcId");
+            return (Criteria) this;
+        }
+
+        public Criteria andRcIdLessThan(Integer value) {
+            addCriterion("rc_id <", value, "rcId");
+            return (Criteria) this;
+        }
+
+        public Criteria andRcIdLessThanOrEqualTo(Integer value) {
+            addCriterion("rc_id <=", value, "rcId");
+            return (Criteria) this;
+        }
+
+        public Criteria andRcIdIn(List<Integer> values) {
+            addCriterion("rc_id in", values, "rcId");
+            return (Criteria) this;
+        }
+
+        public Criteria andRcIdNotIn(List<Integer> values) {
+            addCriterion("rc_id not in", values, "rcId");
+            return (Criteria) this;
+        }
+
+        public Criteria andRcIdBetween(Integer value1, Integer value2) {
+            addCriterion("rc_id between", value1, value2, "rcId");
+            return (Criteria) this;
+        }
+
+        public Criteria andRcIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("rc_id not between", value1, value2, "rcId");
             return (Criteria) this;
         }
 

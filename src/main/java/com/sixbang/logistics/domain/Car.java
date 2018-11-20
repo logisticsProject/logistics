@@ -1,21 +1,13 @@
 package com.sixbang.logistics.domain;
 
 public class Car {
-    private Integer id;
-
     private String numberring;
+
+    private Integer id;
 
     private String licensePlate;
 
     private String routeId;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getNumberring() {
         return numberring;
@@ -23,6 +15,14 @@ public class Car {
 
     public void setNumberring(String numberring) {
         this.numberring = numberring == null ? null : numberring.trim();
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getLicensePlate() {

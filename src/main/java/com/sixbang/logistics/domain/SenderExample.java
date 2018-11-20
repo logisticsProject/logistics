@@ -104,66 +104,6 @@ public class SenderExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andSidIsNull() {
-            addCriterion("sid is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andSidIsNotNull() {
-            addCriterion("sid is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andSidEqualTo(Integer value) {
-            addCriterion("sid =", value, "sid");
-            return (Criteria) this;
-        }
-
-        public Criteria andSidNotEqualTo(Integer value) {
-            addCriterion("sid <>", value, "sid");
-            return (Criteria) this;
-        }
-
-        public Criteria andSidGreaterThan(Integer value) {
-            addCriterion("sid >", value, "sid");
-            return (Criteria) this;
-        }
-
-        public Criteria andSidGreaterThanOrEqualTo(Integer value) {
-            addCriterion("sid >=", value, "sid");
-            return (Criteria) this;
-        }
-
-        public Criteria andSidLessThan(Integer value) {
-            addCriterion("sid <", value, "sid");
-            return (Criteria) this;
-        }
-
-        public Criteria andSidLessThanOrEqualTo(Integer value) {
-            addCriterion("sid <=", value, "sid");
-            return (Criteria) this;
-        }
-
-        public Criteria andSidIn(List<Integer> values) {
-            addCriterion("sid in", values, "sid");
-            return (Criteria) this;
-        }
-
-        public Criteria andSidNotIn(List<Integer> values) {
-            addCriterion("sid not in", values, "sid");
-            return (Criteria) this;
-        }
-
-        public Criteria andSidBetween(Integer value1, Integer value2) {
-            addCriterion("sid between", value1, value2, "sid");
-            return (Criteria) this;
-        }
-
-        public Criteria andSidNotBetween(Integer value1, Integer value2) {
-            addCriterion("sid not between", value1, value2, "sid");
-            return (Criteria) this;
-        }
-
         public Criteria andNumberingIsNull() {
             addCriterion("numbering is null");
             return (Criteria) this;
@@ -231,6 +171,66 @@ public class SenderExample {
 
         public Criteria andNumberingNotBetween(String value1, String value2) {
             addCriterion("numbering not between", value1, value2, "numbering");
+            return (Criteria) this;
+        }
+
+        public Criteria andSidIsNull() {
+            addCriterion("sid is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSidIsNotNull() {
+            addCriterion("sid is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSidEqualTo(Integer value) {
+            addCriterion("sid =", value, "sid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSidNotEqualTo(Integer value) {
+            addCriterion("sid <>", value, "sid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSidGreaterThan(Integer value) {
+            addCriterion("sid >", value, "sid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSidGreaterThanOrEqualTo(Integer value) {
+            addCriterion("sid >=", value, "sid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSidLessThan(Integer value) {
+            addCriterion("sid <", value, "sid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSidLessThanOrEqualTo(Integer value) {
+            addCriterion("sid <=", value, "sid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSidIn(List<Integer> values) {
+            addCriterion("sid in", values, "sid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSidNotIn(List<Integer> values) {
+            addCriterion("sid not in", values, "sid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSidBetween(Integer value1, Integer value2) {
+            addCriterion("sid between", value1, value2, "sid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSidNotBetween(Integer value1, Integer value2) {
+            addCriterion("sid not between", value1, value2, "sid");
             return (Criteria) this;
         }
 

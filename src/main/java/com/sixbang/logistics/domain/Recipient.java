@@ -1,9 +1,9 @@
 package com.sixbang.logistics.domain;
 
 public class Recipient {
-    private Integer rid;
-
     private String numbering;
+
+    private Integer rid;
 
     private String rname;
 
@@ -11,20 +11,20 @@ public class Recipient {
 
     private String raddress;
 
-    public Integer getRid() {
-        return rid;
-    }
-
-    public void setRid(Integer rid) {
-        this.rid = rid;
-    }
-
     public String getNumbering() {
         return numbering;
     }
 
     public void setNumbering(String numbering) {
         this.numbering = numbering == null ? null : numbering.trim();
+    }
+
+    public Integer getRid() {
+        return rid;
+    }
+
+    public void setRid(Integer rid) {
+        this.rid = rid;
     }
 
     public String getRname() {
