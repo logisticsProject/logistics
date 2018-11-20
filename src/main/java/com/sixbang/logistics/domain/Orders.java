@@ -3,6 +3,9 @@ package com.sixbang.logistics.domain;
 import java.util.Date;
 
 public class Orders {
+    //订单编号
+    private String numberring;
+
     private Integer id;
 
     private Integer sendorId;
@@ -47,11 +50,19 @@ public class Orders {
 
     private String by2;
 
-    private Integer number;
+    private Integer amouet;
 
     private Double volume;
 
     private Double goodsValue;
+
+    public String getNumberring() {
+        return numberring;
+    }
+
+    public void setNumberring(String numberring) {
+        this.numberring = numberring == null ? null : numberring.trim();
+    }
 
     public Integer getId() {
         return id;
@@ -229,12 +240,12 @@ public class Orders {
         this.by2 = by2 == null ? null : by2.trim();
     }
 
-    public Integer getNumber() {
-        return number;
+    public Integer getAmouet() {
+        return amouet;
     }
 
-    public void setNumber(Integer number) {
-        this.number = number;
+    public void setAmouet(Integer amouet) {
+        this.amouet = amouet;
     }
 
     public Double getVolume() {

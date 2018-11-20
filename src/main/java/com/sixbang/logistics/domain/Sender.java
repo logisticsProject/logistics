@@ -1,6 +1,8 @@
 package com.sixbang.logistics.domain;
 
 public class Sender {
+    private String numbering;
+
     private Integer sid;
 
     private String sname;
@@ -8,6 +10,14 @@ public class Sender {
     private String sphone;
 
     private String saddress;
+
+    public String getNumbering() {
+        return numbering;
+    }
+
+    public void setNumbering(String numbering) {
+        this.numbering = numbering == null ? null : numbering.trim();
+    }
 
     public Integer getSid() {
         return sid;

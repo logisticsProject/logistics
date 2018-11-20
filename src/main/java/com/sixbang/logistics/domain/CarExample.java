@@ -104,6 +104,76 @@ public class CarExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
+        public Criteria andNumberringIsNull() {
+            addCriterion("numberring is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberringIsNotNull() {
+            addCriterion("numberring is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberringEqualTo(String value) {
+            addCriterion("numberring =", value, "numberring");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberringNotEqualTo(String value) {
+            addCriterion("numberring <>", value, "numberring");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberringGreaterThan(String value) {
+            addCriterion("numberring >", value, "numberring");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberringGreaterThanOrEqualTo(String value) {
+            addCriterion("numberring >=", value, "numberring");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberringLessThan(String value) {
+            addCriterion("numberring <", value, "numberring");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberringLessThanOrEqualTo(String value) {
+            addCriterion("numberring <=", value, "numberring");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberringLike(String value) {
+            addCriterion("numberring like", value, "numberring");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberringNotLike(String value) {
+            addCriterion("numberring not like", value, "numberring");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberringIn(List<String> values) {
+            addCriterion("numberring in", values, "numberring");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberringNotIn(List<String> values) {
+            addCriterion("numberring not in", values, "numberring");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberringBetween(String value1, String value2) {
+            addCriterion("numberring between", value1, value2, "numberring");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberringNotBetween(String value1, String value2) {
+            addCriterion("numberring not between", value1, value2, "numberring");
+            return (Criteria) this;
+        }
+
         public Criteria andIdIsNull() {
             addCriterion("id is null");
             return (Criteria) this;

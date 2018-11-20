@@ -104,6 +104,76 @@ public class SenderExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
+        public Criteria andNumberingIsNull() {
+            addCriterion("numbering is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberingIsNotNull() {
+            addCriterion("numbering is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberingEqualTo(String value) {
+            addCriterion("numbering =", value, "numbering");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberingNotEqualTo(String value) {
+            addCriterion("numbering <>", value, "numbering");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberingGreaterThan(String value) {
+            addCriterion("numbering >", value, "numbering");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberingGreaterThanOrEqualTo(String value) {
+            addCriterion("numbering >=", value, "numbering");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberingLessThan(String value) {
+            addCriterion("numbering <", value, "numbering");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberingLessThanOrEqualTo(String value) {
+            addCriterion("numbering <=", value, "numbering");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberingLike(String value) {
+            addCriterion("numbering like", value, "numbering");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberingNotLike(String value) {
+            addCriterion("numbering not like", value, "numbering");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberingIn(List<String> values) {
+            addCriterion("numbering in", values, "numbering");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberingNotIn(List<String> values) {
+            addCriterion("numbering not in", values, "numbering");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberingBetween(String value1, String value2) {
+            addCriterion("numbering between", value1, value2, "numbering");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberingNotBetween(String value1, String value2) {
+            addCriterion("numbering not between", value1, value2, "numbering");
+            return (Criteria) this;
+        }
+
         public Criteria andSidIsNull() {
             addCriterion("sid is null");
             return (Criteria) this;

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sixbang.logistics.mapper.OrdersMapper">
+  <resultMap id="BaseResultMap" type="com.sixbang.logistics.domain.Orders">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="sendor_id" jdbcType="INTEGER" property="sendorId" />
+    <result column="receiver_id" jdbcType="INTEGER" property="receiverId" />
+    <result column="state_id" jdbcType="INTEGER" property="stateId" />
+    <result column="isPayed" jdbcType="INTEGER" property="ispayed" />
+    <result column="pay_way" jdbcType="VARCHAR" property="payWay" />
+    <result column="payment" jdbcType="DOUBLE" property="payment" />
+    <result column="weight" jdbcType="DOUBLE" property="weight" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="fill_date" jdbcType="TIMESTAMP" property="fillDate" />
+    <result column="forward_arrive_time" jdbcType="TIMESTAMP" property="forwardArriveTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="driver_id" jdbcType="INTEGER" property="driverId" />
+    <result column="receivables_rate" jdbcType="DOUBLE" property="receivablesRate" />
+    <result column="receivables" jdbcType="DOUBLE" property="receivables" />
+    <result column="subtraction" jdbcType="DOUBLE" property="subtraction" />
+    <result column="staff_id" jdbcType="INTEGER" property="staffId" />
+    <result column="delivery_fee" jdbcType="DOUBLE" property="deliveryFee" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="insurance" jdbcType="DOUBLE" property="insurance" />
+    <result column="by1" jdbcType="INTEGER" property="by1" />
+    <result column="by2" jdbcType="VARCHAR" property="by2" />
+    <result column="number" jdbcType="INTEGER" property="number" />
+    <result column="volume" jdbcType="DOUBLE" property="volume" />
+    <result column="goods_value" jdbcType="DOUBLE" property="goodsValue" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from orders
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.sixbang.logistics.domain.Orders">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into orders (sendor_id, receiver_id, state_id, 
+      isPayed, pay_way, payment, 
+      weight, start_time, fill_date, 
+      forward_arrive_time, end_time, driver_id, 
+      receivables_rate, receivables, subtraction, 
+      staff_id, delivery_fee, remark, 
+      insurance, by1, by2, 
+      `number`, volume, goods_value
+      )
+    values (#{sendorId,jdbcType=INTEGER}, #{receiverId,jdbcType=INTEGER}, #{stateId,jdbcType=INTEGER}, 
+      #{ispayed,jdbcType=INTEGER}, #{payWay,jdbcType=VARCHAR}, #{payment,jdbcType=DOUBLE}, 
+      #{weight,jdbcType=DOUBLE}, #{startTime,jdbcType=TIMESTAMP}, #{fillDate,jdbcType=TIMESTAMP}, 
+      #{forwardArriveTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{driverId,jdbcType=INTEGER}, 
+      #{receivablesRate,jdbcType=DOUBLE}, #{receivables,jdbcType=DOUBLE}, #{subtraction,jdbcType=DOUBLE}, 
+      #{staffId,jdbcType=INTEGER}, #{deliveryFee,jdbcType=DOUBLE}, #{remark,jdbcType=VARCHAR}, 
+      #{insurance,jdbcType=DOUBLE}, #{by1,jdbcType=INTEGER}, #{by2,jdbcType=VARCHAR}, 
+      #{number,jdbcType=INTEGER}, #{volume,jdbcType=DOUBLE}, #{goodsValue,jdbcType=DOUBLE}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.sixbang.logistics.domain.Orders">
+    update orders
+    set sendor_id = #{sendorId,jdbcType=INTEGER},
+      receiver_id = #{receiverId,jdbcType=INTEGER},
+      state_id = #{stateId,jdbcType=INTEGER},
+      isPayed = #{ispayed,jdbcType=INTEGER},
+      pay_way = #{payWay,jdbcType=VARCHAR},
+      payment = #{payment,jdbcType=DOUBLE},
+      weight = #{weight,jdbcType=DOUBLE},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      fill_date = #{fillDate,jdbcType=TIMESTAMP},
+      forward_arrive_time = #{forwardArriveTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      driver_id = #{driverId,jdbcType=INTEGER},
+      receivables_rate = #{receivablesRate,jdbcType=DOUBLE},
+      receivables = #{receivables,jdbcType=DOUBLE},
+      subtraction = #{subtraction,jdbcType=DOUBLE},
+      staff_id = #{staffId,jdbcType=INTEGER},
+      delivery_fee = #{deliveryFee,jdbcType=DOUBLE},
+      remark = #{remark,jdbcType=VARCHAR},
+      insurance = #{insurance,jdbcType=DOUBLE},
+      by1 = #{by1,jdbcType=INTEGER},
+      by2 = #{by2,jdbcType=VARCHAR},
+      `number` = #{number,jdbcType=INTEGER},
+      volume = #{volume,jdbcType=DOUBLE},
+      goods_value = #{goodsValue,jdbcType=DOUBLE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, sendor_id, receiver_id, state_id, isPayed, pay_way, payment, weight, start_time, 
+    fill_date, forward_arrive_time, end_time, driver_id, receivables_rate, receivables, 
+    subtraction, staff_id, delivery_fee, remark, insurance, by1, by2, `number`, volume, 
+    goods_value
+    from orders
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, sendor_id, receiver_id, state_id, isPayed, pay_way, payment, weight, start_time, 
+    fill_date, forward_arrive_time, end_time, driver_id, receivables_rate, receivables, 
+    subtraction, staff_id, delivery_fee, remark, insurance, by1, by2, `number`, volume, 
+    goods_value
+    from orders
+  </select>
+</mapper>
