@@ -3,6 +3,545 @@
 <mapper namespace="com.sixbang.logistics.mapper.OrdersMapper">
   <resultMap id="BaseResultMap" type="com.sixbang.logistics.domain.Orders">
     <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="numberring" jdbcType="VARCHAR" property="numberring" />
+    <result column="sendor_id" jdbcType="INTEGER" property="sendorId" />
+    <result column="receiver_id" jdbcType="INTEGER" property="receiverId" />
+    <result column="state_id" jdbcType="INTEGER" property="stateId" />
+    <result column="isPayed" jdbcType="INTEGER" property="ispayed" />
+    <result column="pay_way" jdbcType="VARCHAR" property="payWay" />
+    <result column="payment" jdbcType="DOUBLE" property="payment" />
+    <result column="weight" jdbcType="DOUBLE" property="weight" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="fill_date" jdbcType="TIMESTAMP" property="fillDate" />
+    <result column="forward_arrive_time" jdbcType="TIMESTAMP" property="forwardArriveTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="driver_id" jdbcType="INTEGER" property="driverId" />
+    <result column="receivables_rate" jdbcType="DOUBLE" property="receivablesRate" />
+    <result column="receivables" jdbcType="DOUBLE" property="receivables" />
+    <result column="subtraction" jdbcType="DOUBLE" property="subtraction" />
+    <result column="staff_id" jdbcType="INTEGER" property="staffId" />
+    <result column="delivery_fee" jdbcType="DOUBLE" property="deliveryFee" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="insurance" jdbcType="DOUBLE" property="insurance" />
+    <result column="by1" jdbcType="INTEGER" property="by1" />
+    <result column="by2" jdbcType="VARCHAR" property="by2" />
+    <result column="amouet" jdbcType="INTEGER" property="amouet" />
+    <result column="volume" jdbcType="DOUBLE" property="volume" />
+    <result column="goods_value" jdbcType="DOUBLE" property="goodsValue" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, numberring, sendor_id, receiver_id, state_id, isPayed, pay_way, payment, weight, 
+    start_time, fill_date, forward_arrive_time, end_time, driver_id, receivables_rate, 
+    receivables, subtraction, staff_id, delivery_fee, remark, insurance, by1, by2, amouet, 
+    volume, goods_value
+  </sql>
+  <select id="selectByExample" parameterType="com.sixbang.logistics.domain.OrdersExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from orders
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from orders
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from orders
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sixbang.logistics.domain.OrdersExample">
+    delete from orders
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sixbang.logistics.domain.Orders">
+    insert into orders (id, numberring, sendor_id, 
+      receiver_id, state_id, isPayed, 
+      pay_way, payment, weight, 
+      start_time, fill_date, forward_arrive_time, 
+      end_time, driver_id, receivables_rate, 
+      receivables, subtraction, staff_id, 
+      delivery_fee, remark, insurance, 
+      by1, by2, amouet, volume, 
+      goods_value)
+    values (#{id,jdbcType=INTEGER}, #{numberring,jdbcType=VARCHAR}, #{sendorId,jdbcType=INTEGER}, 
+      #{receiverId,jdbcType=INTEGER}, #{stateId,jdbcType=INTEGER}, #{ispayed,jdbcType=INTEGER}, 
+      #{payWay,jdbcType=VARCHAR}, #{payment,jdbcType=DOUBLE}, #{weight,jdbcType=DOUBLE}, 
+      #{startTime,jdbcType=TIMESTAMP}, #{fillDate,jdbcType=TIMESTAMP}, #{forwardArriveTime,jdbcType=TIMESTAMP}, 
+      #{endTime,jdbcType=TIMESTAMP}, #{driverId,jdbcType=INTEGER}, #{receivablesRate,jdbcType=DOUBLE}, 
+      #{receivables,jdbcType=DOUBLE}, #{subtraction,jdbcType=DOUBLE}, #{staffId,jdbcType=INTEGER}, 
+      #{deliveryFee,jdbcType=DOUBLE}, #{remark,jdbcType=VARCHAR}, #{insurance,jdbcType=DOUBLE}, 
+      #{by1,jdbcType=INTEGER}, #{by2,jdbcType=VARCHAR}, #{amouet,jdbcType=INTEGER}, #{volume,jdbcType=DOUBLE}, 
+      #{goodsValue,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sixbang.logistics.domain.Orders">
+    insert into orders
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="numberring != null">
+        numberring,
+      </if>
+      <if test="sendorId != null">
+        sendor_id,
+      </if>
+      <if test="receiverId != null">
+        receiver_id,
+      </if>
+      <if test="stateId != null">
+        state_id,
+      </if>
+      <if test="ispayed != null">
+        isPayed,
+      </if>
+      <if test="payWay != null">
+        pay_way,
+      </if>
+      <if test="payment != null">
+        payment,
+      </if>
+      <if test="weight != null">
+        weight,
+      </if>
+      <if test="startTime != null">
+        start_time,
+      </if>
+      <if test="fillDate != null">
+        fill_date,
+      </if>
+      <if test="forwardArriveTime != null">
+        forward_arrive_time,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+      <if test="driverId != null">
+        driver_id,
+      </if>
+      <if test="receivablesRate != null">
+        receivables_rate,
+      </if>
+      <if test="receivables != null">
+        receivables,
+      </if>
+      <if test="subtraction != null">
+        subtraction,
+      </if>
+      <if test="staffId != null">
+        staff_id,
+      </if>
+      <if test="deliveryFee != null">
+        delivery_fee,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="insurance != null">
+        insurance,
+      </if>
+      <if test="by1 != null">
+        by1,
+      </if>
+      <if test="by2 != null">
+        by2,
+      </if>
+      <if test="amouet != null">
+        amouet,
+      </if>
+      <if test="volume != null">
+        volume,
+      </if>
+      <if test="goodsValue != null">
+        goods_value,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="numberring != null">
+        #{numberring,jdbcType=VARCHAR},
+      </if>
+      <if test="sendorId != null">
+        #{sendorId,jdbcType=INTEGER},
+      </if>
+      <if test="receiverId != null">
+        #{receiverId,jdbcType=INTEGER},
+      </if>
+      <if test="stateId != null">
+        #{stateId,jdbcType=INTEGER},
+      </if>
+      <if test="ispayed != null">
+        #{ispayed,jdbcType=INTEGER},
+      </if>
+      <if test="payWay != null">
+        #{payWay,jdbcType=VARCHAR},
+      </if>
+      <if test="payment != null">
+        #{payment,jdbcType=DOUBLE},
+      </if>
+      <if test="weight != null">
+        #{weight,jdbcType=DOUBLE},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fillDate != null">
+        #{fillDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="forwardArriveTime != null">
+        #{forwardArriveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="driverId != null">
+        #{driverId,jdbcType=INTEGER},
+      </if>
+      <if test="receivablesRate != null">
+        #{receivablesRate,jdbcType=DOUBLE},
+      </if>
+      <if test="receivables != null">
+        #{receivables,jdbcType=DOUBLE},
+      </if>
+      <if test="subtraction != null">
+        #{subtraction,jdbcType=DOUBLE},
+      </if>
+      <if test="staffId != null">
+        #{staffId,jdbcType=INTEGER},
+      </if>
+      <if test="deliveryFee != null">
+        #{deliveryFee,jdbcType=DOUBLE},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="insurance != null">
+        #{insurance,jdbcType=DOUBLE},
+      </if>
+      <if test="by1 != null">
+        #{by1,jdbcType=INTEGER},
+      </if>
+      <if test="by2 != null">
+        #{by2,jdbcType=VARCHAR},
+      </if>
+      <if test="amouet != null">
+        #{amouet,jdbcType=INTEGER},
+      </if>
+      <if test="volume != null">
+        #{volume,jdbcType=DOUBLE},
+      </if>
+      <if test="goodsValue != null">
+        #{goodsValue,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sixbang.logistics.domain.OrdersExample" resultType="java.lang.Long">
+    select count(*) from orders
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update orders
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.numberring != null">
+        numberring = #{record.numberring,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sendorId != null">
+        sendor_id = #{record.sendorId,jdbcType=INTEGER},
+      </if>
+      <if test="record.receiverId != null">
+        receiver_id = #{record.receiverId,jdbcType=INTEGER},
+      </if>
+      <if test="record.stateId != null">
+        state_id = #{record.stateId,jdbcType=INTEGER},
+      </if>
+      <if test="record.ispayed != null">
+        isPayed = #{record.ispayed,jdbcType=INTEGER},
+      </if>
+      <if test="record.payWay != null">
+        pay_way = #{record.payWay,jdbcType=VARCHAR},
+      </if>
+      <if test="record.payment != null">
+        payment = #{record.payment,jdbcType=DOUBLE},
+      </if>
+      <if test="record.weight != null">
+        weight = #{record.weight,jdbcType=DOUBLE},
+      </if>
+      <if test="record.startTime != null">
+        start_time = #{record.startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.fillDate != null">
+        fill_date = #{record.fillDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.forwardArriveTime != null">
+        forward_arrive_time = #{record.forwardArriveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.endTime != null">
+        end_time = #{record.endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.driverId != null">
+        driver_id = #{record.driverId,jdbcType=INTEGER},
+      </if>
+      <if test="record.receivablesRate != null">
+        receivables_rate = #{record.receivablesRate,jdbcType=DOUBLE},
+      </if>
+      <if test="record.receivables != null">
+        receivables = #{record.receivables,jdbcType=DOUBLE},
+      </if>
+      <if test="record.subtraction != null">
+        subtraction = #{record.subtraction,jdbcType=DOUBLE},
+      </if>
+      <if test="record.staffId != null">
+        staff_id = #{record.staffId,jdbcType=INTEGER},
+      </if>
+      <if test="record.deliveryFee != null">
+        delivery_fee = #{record.deliveryFee,jdbcType=DOUBLE},
+      </if>
+      <if test="record.remark != null">
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.insurance != null">
+        insurance = #{record.insurance,jdbcType=DOUBLE},
+      </if>
+      <if test="record.by1 != null">
+        by1 = #{record.by1,jdbcType=INTEGER},
+      </if>
+      <if test="record.by2 != null">
+        by2 = #{record.by2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.amouet != null">
+        amouet = #{record.amouet,jdbcType=INTEGER},
+      </if>
+      <if test="record.volume != null">
+        volume = #{record.volume,jdbcType=DOUBLE},
+      </if>
+      <if test="record.goodsValue != null">
+        goods_value = #{record.goodsValue,jdbcType=DOUBLE},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update orders
+    set id = #{record.id,jdbcType=INTEGER},
+      numberring = #{record.numberring,jdbcType=VARCHAR},
+      sendor_id = #{record.sendorId,jdbcType=INTEGER},
+      receiver_id = #{record.receiverId,jdbcType=INTEGER},
+      state_id = #{record.stateId,jdbcType=INTEGER},
+      isPayed = #{record.ispayed,jdbcType=INTEGER},
+      pay_way = #{record.payWay,jdbcType=VARCHAR},
+      payment = #{record.payment,jdbcType=DOUBLE},
+      weight = #{record.weight,jdbcType=DOUBLE},
+      start_time = #{record.startTime,jdbcType=TIMESTAMP},
+      fill_date = #{record.fillDate,jdbcType=TIMESTAMP},
+      forward_arrive_time = #{record.forwardArriveTime,jdbcType=TIMESTAMP},
+      end_time = #{record.endTime,jdbcType=TIMESTAMP},
+      driver_id = #{record.driverId,jdbcType=INTEGER},
+      receivables_rate = #{record.receivablesRate,jdbcType=DOUBLE},
+      receivables = #{record.receivables,jdbcType=DOUBLE},
+      subtraction = #{record.subtraction,jdbcType=DOUBLE},
+      staff_id = #{record.staffId,jdbcType=INTEGER},
+      delivery_fee = #{record.deliveryFee,jdbcType=DOUBLE},
+      remark = #{record.remark,jdbcType=VARCHAR},
+      insurance = #{record.insurance,jdbcType=DOUBLE},
+      by1 = #{record.by1,jdbcType=INTEGER},
+      by2 = #{record.by2,jdbcType=VARCHAR},
+      amouet = #{record.amouet,jdbcType=INTEGER},
+      volume = #{record.volume,jdbcType=DOUBLE},
+      goods_value = #{record.goodsValue,jdbcType=DOUBLE}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sixbang.logistics.domain.Orders">
+    update orders
+    <set>
+      <if test="numberring != null">
+        numberring = #{numberring,jdbcType=VARCHAR},
+      </if>
+      <if test="sendorId != null">
+        sendor_id = #{sendorId,jdbcType=INTEGER},
+      </if>
+      <if test="receiverId != null">
+        receiver_id = #{receiverId,jdbcType=INTEGER},
+      </if>
+      <if test="stateId != null">
+        state_id = #{stateId,jdbcType=INTEGER},
+      </if>
+      <if test="ispayed != null">
+        isPayed = #{ispayed,jdbcType=INTEGER},
+      </if>
+      <if test="payWay != null">
+        pay_way = #{payWay,jdbcType=VARCHAR},
+      </if>
+      <if test="payment != null">
+        payment = #{payment,jdbcType=DOUBLE},
+      </if>
+      <if test="weight != null">
+        weight = #{weight,jdbcType=DOUBLE},
+      </if>
+      <if test="startTime != null">
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fillDate != null">
+        fill_date = #{fillDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="forwardArriveTime != null">
+        forward_arrive_time = #{forwardArriveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="driverId != null">
+        driver_id = #{driverId,jdbcType=INTEGER},
+      </if>
+      <if test="receivablesRate != null">
+        receivables_rate = #{receivablesRate,jdbcType=DOUBLE},
+      </if>
+      <if test="receivables != null">
+        receivables = #{receivables,jdbcType=DOUBLE},
+      </if>
+      <if test="subtraction != null">
+        subtraction = #{subtraction,jdbcType=DOUBLE},
+      </if>
+      <if test="staffId != null">
+        staff_id = #{staffId,jdbcType=INTEGER},
+      </if>
+      <if test="deliveryFee != null">
+        delivery_fee = #{deliveryFee,jdbcType=DOUBLE},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="insurance != null">
+        insurance = #{insurance,jdbcType=DOUBLE},
+      </if>
+      <if test="by1 != null">
+        by1 = #{by1,jdbcType=INTEGER},
+      </if>
+      <if test="by2 != null">
+        by2 = #{by2,jdbcType=VARCHAR},
+      </if>
+      <if test="amouet != null">
+        amouet = #{amouet,jdbcType=INTEGER},
+      </if>
+      <if test="volume != null">
+        volume = #{volume,jdbcType=DOUBLE},
+      </if>
+      <if test="goodsValue != null">
+        goods_value = #{goodsValue,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sixbang.logistics.domain.Orders">
+    update orders
+    set numberring = #{numberring,jdbcType=VARCHAR},
+      sendor_id = #{sendorId,jdbcType=INTEGER},
+      receiver_id = #{receiverId,jdbcType=INTEGER},
+      state_id = #{stateId,jdbcType=INTEGER},
+      isPayed = #{ispayed,jdbcType=INTEGER},
+      pay_way = #{payWay,jdbcType=VARCHAR},
+      payment = #{payment,jdbcType=DOUBLE},
+      weight = #{weight,jdbcType=DOUBLE},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      fill_date = #{fillDate,jdbcType=TIMESTAMP},
+      forward_arrive_time = #{forwardArriveTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      driver_id = #{driverId,jdbcType=INTEGER},
+      receivables_rate = #{receivablesRate,jdbcType=DOUBLE},
+      receivables = #{receivables,jdbcType=DOUBLE},
+      subtraction = #{subtraction,jdbcType=DOUBLE},
+      staff_id = #{staffId,jdbcType=INTEGER},
+      delivery_fee = #{deliveryFee,jdbcType=DOUBLE},
+      remark = #{remark,jdbcType=VARCHAR},
+      insurance = #{insurance,jdbcType=DOUBLE},
+      by1 = #{by1,jdbcType=INTEGER},
+      by2 = #{by2,jdbcType=VARCHAR},
+      amouet = #{amouet,jdbcType=INTEGER},
+      volume = #{volume,jdbcType=DOUBLE},
+      goods_value = #{goodsValue,jdbcType=DOUBLE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.sixbang.logistics.domain.Orders">
+    <id column="id" jdbcType="INTEGER" property="id" />
     <result column="sendor_id" jdbcType="INTEGER" property="sendorId" />
     <result column="receiver_id" jdbcType="INTEGER" property="receiverId" />
     <result column="state_id" jdbcType="INTEGER" property="stateId" />
