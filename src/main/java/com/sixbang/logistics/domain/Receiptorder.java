@@ -11,6 +11,8 @@ public class Receiptorder {
 
     private String contractId;
 
+    /*a*/
+
     public Integer getRcId() {
         return rcId;
     }
