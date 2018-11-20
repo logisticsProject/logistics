@@ -33,36 +33,5 @@
     select rc_id, numbering, state, contract_id
     from receipt_order
   </select>
-  <resultMap id="BaseResultMap" type="com.sixbang.logistics.domain.Receiptorder">
-    <id column="rc_id" jdbcType="INTEGER" property="rcId" />
-    <result column="numbering" jdbcType="VARCHAR" property="numbering" />
-    <result column="state" jdbcType="VARCHAR" property="state" />
-    <result column="contract_id" jdbcType="VARCHAR" property="contractId" />
-  </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from receipt_order
-    where rc_id = #{rcId,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.sixbang.logistics.domain.Receiptorder">
-    insert into receipt_order (rc_id, numbering, state, 
-      contract_id)
-    values (#{rcId,jdbcType=INTEGER}, #{numbering,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR}, 
-      #{contractId,jdbcType=VARCHAR})
-  </insert>
-  <update id="updateByPrimaryKey" parameterType="com.sixbang.logistics.domain.Receiptorder">
-    update receipt_order
-    set numbering = #{numbering,jdbcType=VARCHAR},
-      state = #{state,jdbcType=VARCHAR},
-      contract_id = #{contractId,jdbcType=VARCHAR}
-    where rc_id = #{rcId,jdbcType=INTEGER}
-  </update>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select rc_id, numbering, state, contract_id
-    from receipt_order
-    where rc_id = #{rcId,jdbcType=INTEGER}
-  </select>
-  <select id="selectAll" resultMap="BaseResultMap">
-    select rc_id, numbering, state, contract_id
-    from receipt_order
-  </select>
+
 </mapper>
