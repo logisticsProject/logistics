@@ -40,7 +40,7 @@ public class Orders implements Serializable {
 
     private Integer staffId;
 
-    private Double deliveryFee;
+    private Double deliveryFee;//123
 
     private String remark;
 
