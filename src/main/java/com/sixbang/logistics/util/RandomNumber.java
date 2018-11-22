@@ -1,11 +1,15 @@
 package com.sixbang.logistics.util;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Random;
 
 /**
  * 随机产生订单编号
  */
 public class RandomNumber {
+
+    public static int number = 1;
 
     private static Random random = new Random();
 
@@ -16,9 +20,10 @@ public class RandomNumber {
     public static String getLiuShuiId() {
         String str = null;
         int num = random.nextInt(100000) + 10000;
-        int i = random.nextInt(25) + 67;
+        int i = random.nextInt(25) + 67+number;
         char ch = (char) i;
         str = ch + "-" + num + "";
+        number++;
         return str;
     }
 
@@ -28,8 +33,9 @@ public class RandomNumber {
      */
     public static String getDriverid(){
         String str = null;
-        int num = random.nextInt(100000)+100000;
-        str = "S-"+num;
+        String nowDate = new SimpleDateFormat("yyMMddHHmmss").format(new Date());
+        int num = random.nextInt(10);
+        str = "S-"+nowDate+num;
         return str;
     }
 
@@ -39,7 +45,8 @@ public class RandomNumber {
      */
     public static String getReceiver(){
         String str = null;
-        int num = random.nextInt(100000)+100000;
+        String nowDate = new SimpleDateFormat("yyMMddHHmmss").format(new Date());
+        int num = random.nextInt(10);
         str = "M-"+num;
         return str;
     }
@@ -50,8 +57,21 @@ public class RandomNumber {
      */
     public static String getStadd(){
         String str = null;
-        int num = random.nextInt(100000)+100000;
-        str = "Z-"+num;
+        String nowDate = new SimpleDateFormat("yyMMddHHmmss").format(new Date());
+        int num = random.nextInt(10);
+        str = "Z-"+nowDate+num;
+        return str;
+    }
+
+    /**
+     * 合同编号
+     * @return
+     */
+    public static String getContractId(){
+        String str = null;
+        String nowDate = new SimpleDateFormat("yyMMddHHmmss").format(new Date());
+        int num = random.nextInt(10);
+        str = "H-"+nowDate+num;
         return str;
     }
 
