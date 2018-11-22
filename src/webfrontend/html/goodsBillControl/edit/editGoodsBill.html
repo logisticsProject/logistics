@@ -1,278 +1,280 @@
-<!DOCTYPE html>
-<html lang="en">
+<!--_meta 作为公共模版分离出去-->
+<!DOCTYPE HTML>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>接货单填写页面</title>
-    <link rel="stylesheet" href="../../../layui/css/layui.css">
-    <link rel="stylesheet" href="../../../css/admin.css">
-    <style>
-        .wd-100 {
-            width: 100px;
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel="Bookmark" href="../../../favicon.ico" >
+<link rel="Shortcut Icon" href="../../../favicon.ico" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="../../../lib/html5shiv.js"></script>
+<script type="text/javascript" src="../../../lib/respond.min.js"></script>
+<![endif]-->
+<link rel="stylesheet" type="text/css" href="../../../static/h-ui/css/H-ui.min.css" />
+<link rel="stylesheet" type="text/css" href="../../../static/h-ui.admin/css/H-ui.admin.css" />
+<link rel="stylesheet" type="text/css" href="../../../lib/Hui-iconfont/1.0.8/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="../../../static/h-ui.admin/skin/default/skin.css" id="skin" />
+<link rel="stylesheet" type="text/css" href="../../../static/h-ui.admin/css/style.css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="../../../lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<!--/meta 作为公共模版分离出去-->
+
+<title>添加用户 - H-ui.admin v3.1</title>
+<meta name="keywords" content="H-ui.admin v3.1,H-ui网站后台模版,后台模版下载,后台管理系统模版,HTML后台模版下载">
+<meta name="description" content="H-ui.admin v3.1，是一款由国人开发的轻量级扁平化网站后台模板，完全免费开源的网站后台管理系统模版，适合中小型CMS后台系统。">
 </head>
 <body>
-<div class="layui-form-item" style="margin-top: 20px">
-    <form class="layui-form" action="" id="goodsBillForm">
-        <div class="layui-form-item">
-            <label class="layui-form-label wd-100">发货客户编号</label>
-            <div class="layui-input-inline">
-                <select name="sendGoodsCustomerNo" lay-verify="required" lay-filter="changeSend" id="sendGoodsCustomerNo" lay-search>
-                    <option value="">请选择发货客户编号</option>
-                </select>
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <div class="layui-inline">
-                <label class="layui-form-label wd-100">发货客户</label>
-                <div class="layui-input-inline">
-                    <input type="text" id="sendGoodsCustomer" name="sendGoodsCustomer" disabled autocomplete="off" class="layui-input">
-                </div>
-            </div>
-            <div class="layui-inline">
-                <label class="layui-form-label wd-100">发货客户电话</label>
-                <div class="layui-input-inline">
-                    <input type="text" id="sendGoodsCustomerTel" name="sendGoodsCustomerTel" disabled autocomplete="off" class="layui-input">
-                </div>
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label wd-100">发货客户地址</label>
-            <div class="layui-input-inline" style="width: 534px">
-                <input type="text" id="sendGoodsCustomerAddr" name="sendGoodsCustomerAddr" disabled autocomplete="off" class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label wd-100">收货客户编号</label>
-            <div class="layui-input-inline">
-                <select name="receiveGoodsCustomerCode" lay-verify="required" lay-filter="changeSend2" id="receiveGoodsCustomerCode" lay-search>
-                    <option value="">请选择收货客户编号</option>
-                </select>
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <div class="layui-inline">
-                <label class="layui-form-label wd-100">收货客户</label>
-                <div class="layui-input-inline">
-                    <input type="text" id="receiveGoodsCustomer" name="receiveGoodsCustomer" disabled autocomplete="off" class="layui-input">
-                </div>
-            </div>
-            <div class="layui-inline">
-                <label class="layui-form-label wd-100">收货客户电话</label>
-                <div class="layui-input-inline">
-                    <input type="text" id="receiveGoodsCustomerTel" name="receiveGoodsCustomerTel"
-                           disabled autocomplete="off" class="layui-input">
-                </div>
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label wd-100">收货客户地址</label>
-            <div class="layui-input-inline" style="width: 534px">
-                <input type="text" id="receiveGoodsCustomerAddr" name="receiveGoodsCustomerAddr" disabled autocomplete="off" class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label wd-100">发货日期</label>
-            <div class="layui-input-inline">
-                <input type="text" name="sendGoodsDate" id="sendGoodsDate" class="layui-input test-item" />
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label wd-100">发货地址</label>
-            <div class="layui-input-inline" style="width: 534px">
-                <input type="text" id="sendGoodsAddr" name="sendGoodsAddr" lay-verify="required" placeholder="请输入发货地址" autocomplete="off" class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label wd-100">收货地址</label>
-            <div class="layui-input-inline" style="width: 534px">
-                <input type="text" id="receiveGoodsAddr" name="receiveGoodsAddr" lay-verify="required" placeholder="请输入收货地址" autocomplete="off" class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <div class="layui-inline">
-                <label class="layui-form-label wd-100">预期交货日期</label>
-                <div class="layui-input-inline">
-                    <input type="text" name="predeliveryDate" id="predeliveryDate" class="layui-input test-item" />
-                </div>
-            </div>
-            <div class="layui-inline">
-                <label class="layui-form-label wd-100">实际交货日期</label>
-                <div class="layui-input-inline">
-                    <input type="text" name="factDealDate" id="factDealDate" disabled class="layui-input test-item" />
-                </div>
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <div class="layui-inline">
-                <label class="layui-form-label wd-100">代收货款</label>
-                <div class="layui-input-inline">
-                    <input type="text" id="helpAcceptPayment" name="helpAcceptPayment" lay-verify="required|number" placeholder="请输入代收货款"
-                           autocomplete="off" class="layui-input">
-                </div>
-            </div>
-            <div class="layui-inline">
-                <label class="layui-form-label wd-100">代收手续费率</label>
-                <div class="layui-input-inline">
-                    <input type="text" id="acceptProcedureRate" name="acceptProcedureRate" lay-verify="required|number" placeholder="请输入代收手续费率"
-                           autocomplete="off" class="layui-input">
-                </div>
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <div class="layui-inline">
-                <label class="layui-form-label wd-100">付款方式</label>
-                <div class="layui-input-inline">
-                    <input type="text" id="payMode" name="payMode" lay-verify="required" placeholder="请输入付款方式"
-                           autocomplete="off" class="layui-input">
-                </div>
-            </div>
-            <div class="layui-inline">
-                <label class="layui-form-label wd-100">取货方式</label>
-                <div class="layui-input-inline">
-                    <input type="text" id="fetchGoodsMode" name="fetchGoodsMode" lay-verify="required" placeholder="请输入取货方式"
-                           autocomplete="off" class="layui-input">
-                </div>
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <div class="layui-inline">
-                <label class="layui-form-label wd-100">填票人</label>
-                <div class="layui-input-inline">
-                    <input type="text" id="writeBillPerson" name="writeBillPerson" disabled lay-verify="required" placeholder="请输入填票人"
-                           autocomplete="off" class="layui-input">
-                </div>
-            </div>
-            <div class="layui-inline">
-                <label class="layui-form-label wd-100">填写日期</label>
-                <div class="layui-input-inline">
-                    <input type="text" name="writeDate" id="writeDate" disabled class="layui-input test-item"/>
-                </div>
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <div class="layui-inline">
-                <label class="layui-form-label wd-100">是否有效</label>
-                <div class="layui-input-inline">
-                    <input type="checkbox" id="validity" name="validity" disabled lay-skin="switch" lay-text="有效|无效">
-                </div>
-            </div>
+<article class="page-container">
+	<form action="" method="post" class="form form-horizontal" id="form-member-add">
 
-            <div class="layui-inline">
-                <label class="layui-form-label wd-100">是否审核</label>
-                <div class="layui-input-inline">
-                    <input type="checkbox" id="ifAudit" name="ifAudit" disabled lay-skin="switch" lay-text="审核|未审核">
-                </div>
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <div class="layui-inline">
-                <label class="layui-form-label wd-100">是否结账</label>
-                <div class="layui-input-inline">
-                    <input type="checkbox" id="checkSettle" name="checkSettle" lay-filter="checkSettle" lay-skin="switch" lay-text="结账|未结账">
-                </div>
-            </div>
-            <input type="hidden" id="ifSettleAccounts" name="ifSettleAccounts" value="false">
-            <div class="layui-inline">
-                <label class="layui-form-label wd-100">减款</label>
-                <div class="layui-input-inline">
-                    <input type="text" id="reduceFund" name="reduceFund" lay-verify="required|number" placeholder="请输入减款"
-                           autocomplete="off" class="layui-input">
-                </div>
-            </div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3">发货客户编号：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" style="width: 30%" class="input-text" disabled autocomplete="off" value="" placeholder="" id="sendGoodsCustomerNo" name="sendGoodsCustomerNo">
+			</div>
+		</div>
+		<div class="">
+			<div class="row cl" >
+				<label class="form-label col-xs-4 col-sm-3">发货客户：</label>
+				<div class="formControls col-xs-8 col-sm-9">
+					<input type="text" style="width: 50%"  class="input-text" value="" placeholder="" disabled autocomplete="off" id="sendGoodsCustomer" name="sendGoodsCustomer">
+				</div>
+			</div>
+			<div class="row cl" >
+				<label class="form-label col-xs-4 col-sm-3">发货客户电话：</label>
+				<div class="formControls col-xs-8 col-sm-9">
+					<input type="text" style="width: 50%"  class="input-text" value="" placeholder="" disabled autocomplete="off" id="sendGoodsCustomerTel" name="sendGoodsCustomerTel">
+				</div>
+			</div>
+			<div class="row cl" >
+				<label class="form-label col-xs-4 col-sm-3">发货客户地址：</label>
+				<div class="formControls col-xs-8 col-sm-9">
+					<input type="text" style="width: 50%"  class="input-text" value="" placeholder="" disabled autocomplete="off" id="sendGoodsCustomerAddr" name="sendGoodsCustomerAddr">
+				</div>
+			</div>
+		</div>
 
-        </div>
-        <div class="layui-form-item">
-            <div class="layui-inline">
-                <label class="layui-form-label wd-100">中转地</label>
-                <div class="layui-input-inline">
-                    <input type="text" id="transferStation" name="transferStation" disabled class="layui-input">
-                </div>
-            </div>
-            <div class="layui-inline">
-                <label class="layui-form-label wd-100">中转费</label>
-                <div class="layui-input-inline">
-                    <input type="text" id="transferFee" name="transferFee" disabled class="layui-input">
-                </div>
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <div class="layui-inline">
-                <label class="layui-form-label wd-100">付回扣</label>
-                <div class="layui-input-inline">
-                    <input type="text" id="payKickback" name="payKickback" lay-verify="required|number" placeholder="请输入代回扣"
-                           autocomplete="off" class="layui-input">
-                </div>
-            </div>
-            <div class="layui-inline">
-                <label class="layui-form-label wd-100">变更后金额</label>
-                <div class="layui-input-inline">
-                    <input type="text" id="moneyOfChangePay" name="moneyOfChangePay" disabled class="layui-input">
-                </div>
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <div class="layui-inline">
-                <label class="layui-form-label wd-100">送货费</label>
-                <div class="layui-input-inline">
-                    <input type="text" id="carryGoodsFee" name="carryGoodsFee" lay-verify="required|number" placeholder="请输入送货费"
-                           autocomplete="off" class="layui-input">
-                </div>
-            </div>
-            <div class="layui-inline">
-                <label class="layui-form-label wd-100">运费</label>
-                <div class="layui-input-inline">
-                    <input type="text" id="carriage" name="carriage" lay-verify="required|number" placeholder="请输入运费"
-                           autocomplete="off" class="layui-input">
-                </div>
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <div class="layui-inline">
-                <label class="layui-form-label wd-100">保险费</label>
-                <div class="layui-input-inline">
-                    <input type="text" id="insurance" name="insurance" lay-verify="required|number" placeholder="请输入保险费"
-                           autocomplete="off" class="layui-input">
-                </div>
-            </div>
-            <div class="layui-inline">
-                <label class="layui-form-label wd-100">职员编号</label>
-                <div class="layui-input-inline">
-                    <input type="text" id="employeeCode" name="employeeCode" disabled lay-verify="required" placeholder="请输入职员编号"
-                           autocomplete="off" class="layui-input">
-                </div>
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <div class="layui-inline">
-                <label class="layui-form-label wd-100">备注</label>
-                <div class="layui-input-inline">
-                    <input type="text" id="remark" name="remark" placeholder="请输入备注"
-                           autocomplete="off" class="layui-input">
-                </div>
-            </div>
-            <div class="layui-inline">
-                <label class="layui-form-label wd-100">接货点</label>
-                <div class="layui-input-inline">
-                    <input type="text" id="acceptStation" name="acceptStation" lay-verify="required" placeholder="请输入接货点"
-                           autocomplete="off" class="layui-input">
-                </div>
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <div class="layui-input-block">
-                <button class="layui-btn" lay-submit lay-filter="addGoodsBill" id="addGoodsBill">立即提交</button>
-                <button type="reset" id="resetForm" class="layui-btn layui-btn-primary">重置</button>
-            </div>
-        </div>
-    </form>
-</div>
-<script src="../../../layui/layui.js"></script>
-<script src="../../../js/jquery/jquery-3.3.1.js"></script>
-<script src="../../../js/jquery/jquery.cookie.js"></script>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3">收货客户编号：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" style="width: 30%" class="input-text" disabled autocomplete="off" value="" placeholder="" id="receiveGoodsCustomerCode" name="receiveGoodsCustomerCode">
+			</div>
+		</div>
+		<div class="">
+			<div class="row cl" >
+				<label class="form-label col-xs-4 col-sm-3">收货客户：</label>
+				<div class="formControls col-xs-8 col-sm-9">
+					<input type="text" style="width: 50%"  class="input-text" value="" placeholder="" disabled autocomplete="off" id="receiveGoodsCustomer" name="receiveGoodsCustomer">
+				</div>
+			</div>
+			<div class="row cl" >
+				<label class="form-label col-xs-4 col-sm-3">收货客户电话：</label>
+				<div class="formControls col-xs-8 col-sm-9">
+					<input type="text" style="width: 50%"  class="input-text" value="" placeholder="" disabled autocomplete="off" id="" name="">
+				</div>
+			</div>
+			<div class="row cl" >
+				<label class="form-label col-xs-4 col-sm-3">收货客户地址：</label>
+				<div class="formControls col-xs-8 col-sm-9">
+					<input type="text" style="width: 50%"  class="input-text" value="" placeholder="" disabled autocomplete="off" id="receiveGoodsCustomerAddr" name="receiveGoodsCustomerAddr">
+				</div>
+			</div>
+		</div>
+		<div class="">
+			<div class="row cl" >
+				<label class="form-label col-xs-4 col-sm-3">预期交货日期：</label>
+				<div class="formControls col-xs-8 col-sm-9">
+					<input type="date" style="width: 30%"  class="input-text" value="" placeholder=""  id="" name="">
+				</div>
+			</div>
+			<div class="row cl" >
+				<label class="form-label col-xs-4 col-sm-3">实际交货日期：</label>
+				<div class="formControls col-xs-8 col-sm-9">
+					<input type="text" style="width: 30%"  class="input-text" disabled placeholder=""  id="" name="">
+				</div>
+			</div>
 
-<script src="../../../js/nginx.js"></script>
-<script src="../../../js/goodsBillControl/edit/editGoodsBill.js"></script>
+		</div>
 
+		<div class="row cl" >
+			<label class="form-label col-xs-4 col-sm-3">件数：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" style="width: 50%"  class="input-text" value=""  placeholder="请输入件数" id="" name="">
+
+			</div>
+		</div>
+
+		<div class="row cl" >
+			<label class="form-label col-xs-4 col-sm-3">重量：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" style="width: 50%"  class="input-text" value="" placeholder="请输入重量" id="" name="">
+			</div>
+		</div>
+			<div class="row cl" >
+				<label class="form-label col-xs-4 col-sm-3">体积：</label>
+				<div class="formControls col-xs-8 col-sm-9">
+					<input type="text" style="width: 50%"  class="input-text" value="" placeholder="请输入体积"  id="" name="">
+				</div>
+			</div>
+			<div class="row cl" >
+				<label class="form-label col-xs-4 col-sm-3">计价方式：</label>
+				<div class="formControls col-xs-8 col-sm-9">
+					<input type="text" style="width: 50%"  class="input-text" value="按重量计费"  id="" name="">
+				</div>
+			</div>
+			<div class="row cl" >
+				<label class="form-label col-xs-4 col-sm-3">货物价值：</label>
+				<div class="formControls col-xs-8 col-sm-9">
+					<input type="text" style="width: 50%"  class="input-text" value="" placeholder="请输入货物价值"  id="" name="">
+				</div>
+			</div>
+		<div class="row cl" >
+			<label class="form-label col-xs-4 col-sm-3">代收货款：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" style="width: 50%"  class="input-text" value="" placeholder="请输入代收货款"  id="" name="">
+			</div>
+		</div>
+
+		<div class="row cl" >
+			<label class="form-label col-xs-4 col-sm-3">代收手续费率：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" style="width: 50%"  class="input-text" value="" placeholder="请输入代收手续费率"  id="" name="">
+			</div>
+		</div>
+
+		<div class="row cl" >
+			<label class="form-label col-xs-4 col-sm-3">付款方式：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" style="width: 50%"  class="input-text" value="" placeholder="请输入付款方式"  id="" name="">
+			</div>
+		</div>
+
+		<div class="row cl" >
+			<label class="form-label col-xs-4 col-sm-3">填票人：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" style="width: 50%"  class="input-text" value="" placeholder="请输入填票人"  id="" name="">
+			</div>
+		</div>
+
+		<div class="row cl" >
+			<label class="form-label col-xs-4 col-sm-3">填写日期：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="date" style="width: 50%"  class="input-text" value="" placeholder=""  id="" name="">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3">是否结账：</label>
+			<div class="formControls col-xs-8 col-sm-9 skin-minimal">
+				<div class="radio-box">
+					<input name="isPayed" type="radio" id="isPayed-1" >
+					<label for="sex-1">已结</label>
+				</div>
+				<div class="radio-box">
+					<input type="radio" id="isPayed-2" name="isPayed" checked>
+					<label for="sex-2">未结</label>
+				</div>
+
+			</div>
+		</div>
+		<div class="row cl" >
+			<label class="form-label col-xs-4 col-sm-3">减款：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" style="width: 50%"  class="input-text" value="" placeholder="请输入减款"  id="" name="">
+			</div>
+		</div>
+		<div class="row cl" >
+			<label class="form-label col-xs-4 col-sm-3">送货费：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" style="width: 50%"  class="input-text" value="" placeholder="请输入送货费"  id="" name="">
+			</div>
+		</div>
+		<div class="row cl" >
+			<label class="form-label col-xs-4 col-sm-3">运费：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" style="width: 50%"  class="input-text" value="" placeholder="请输入运费"  id="" name="">
+			</div>
+		</div>
+		<div class="row cl" >
+			<label class="form-label col-xs-4 col-sm-3">保险费：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" style="width: 50%"  class="input-text" value="" placeholder="请输入保险费"  id="" name="">
+			</div>
+		</div>
+		<div class="row cl" >
+			<label class="form-label col-xs-4 col-sm-3">备注：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" style="width: 50%"  class="input-text" value="" placeholder="请输入备注"  id="" name="">
+			</div>
+		</div>
+
+		<div class="row cl">
+			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+				<input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+				<input class="btn btn-default radius" type="submit" value="&nbsp;&nbsp;重置&nbsp;&nbsp;">
+			</div>
+		</div>
+	</form>
+</article>
+
+<!--_footer 作为公共模版分离出去-->
+<script type="text/javascript" src="../../../lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="../../../lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="../../../static/h-ui/js/H-ui.min.js"></script>
+<script type="text/javascript" src="../../../static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
+
+<!--请在下方写此页面业务相关的脚本--> 
+<script type="text/javascript" src="../../../lib/My97DatePicker/4.8/WdatePicker.js"></script>
+<script type="text/javascript" src="../../../lib/jquery.validation/1.14.0/jquery.validate.js"></script>
+<script type="text/javascript" src="../../../lib/jquery.validation/1.14.0/validate-methods.js"></script>
+<script type="text/javascript" src="../../../lib/jquery.validation/1.14.0/messages_zh.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('.skin-minimal input').iCheck({
+		checkboxClass: 'icheckbox-blue',
+		radioClass: 'iradio-blue',
+		increaseArea: '20%'
+	});
+	
+	$("#form-member-add").validate({
+		rules:{
+			username:{
+				required:true,
+				minlength:2,
+				maxlength:16
+			},
+			sex:{
+				required:true,
+			},
+			mobile:{
+				required:true,
+				isMobile:true,
+			},
+			email:{
+				required:true,
+				email:true,
+			},
+			uploadfile:{
+				required:true,
+			},
+			
+		},
+		onkeyup:false,
+		focusCleanup:true,
+		success:"valid",
+		submitHandler:function(form){
+			//$(form).ajaxSubmit();
+			var index = parent.layer.getFrameIndex(window.name);
+			//parent.$('.btn-refresh').click();
+			parent.layer.close(index);
+		}
+	});
+});
+</script> 
+<!--/请在上方写此页面业务相关的脚本-->
 </body>
 </html>

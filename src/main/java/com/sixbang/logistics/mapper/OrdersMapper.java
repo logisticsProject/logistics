@@ -1,8 +1,11 @@
 package com.sixbang.logistics.mapper;
 
 import com.sixbang.logistics.domain.Orders;
-import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
+import java.util.List;
+@Repository
 public interface OrdersMapper {
     int deleteByPrimaryKey(Integer id);
 

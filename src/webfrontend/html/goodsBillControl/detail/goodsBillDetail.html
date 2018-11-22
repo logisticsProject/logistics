@@ -1,56 +1,291 @@
-<!DOCTYPE html>
-<html lang="en">
+﻿<!DOCTYPE HTML>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>接货单查询页面</title>
-    <link rel="stylesheet" href="../../../layui/css/layui.css">
-    <link rel="stylesheet" href="../../../css/admin.css">
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="../../../lib/html5shiv.js"></script>
+<script type="text/javascript" src="../../../lib/respond.min.js"></script>
+<![endif]-->
+<link rel="stylesheet" type="text/css" href="../../../static/h-ui/css/H-ui.min.css" />
+<link rel="stylesheet" type="text/css" href="../../../static/h-ui.admin/css/H-ui.admin.css" />
+<link rel="stylesheet" type="text/css" href="../../../lib/Hui-iconfont/1.0.8/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="../../../static/h-ui.admin/skin/default/skin.css" id="skin" />
+<link rel="stylesheet" type="text/css" href="../../../static/h-ui.admin/css/style.css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="../../../lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<title>查询接货单</title>
 </head>
 <body>
-    <div class="layui-tab layui-tab-brief" lay-filter="demo">
-        <ul class="layui-tab-title">
-            <li class="layui-this">待发运单</li>
-            <li>未到运单</li>
-            <li>未结运单</li>
-            <li>所有运单</li>
-        </ul>
-        <div class="layui-tab-content" style="height: 100px; display: block">
-            <div class="layui-tab-item layui-show">
-                <table id="goodsBillTable1" lay-filter="goodsBillTool"></table>
-                <script type="text/html" id="barDemo1">
-                    <a class="layui-btn layui-btn-xs layui-btn-warm" lay-event="detail">查看详情</a>
-                    <a class="layui-btn layui-btn-xs" lay-event="edit">修改</a>
-                    <a class="layui-btn layui-btn-danger layui-btn-xs" data-method="offset" lay-event="del">删除</a>
-                </script>
-            </div>
-            <div class="layui-tab-item">
-                <table id="goodsBillTable2" lay-filter="goodsBillTool"></table>
-                <script type="text/html" id="barDemo2">
-                    <a class="layui-btn layui-btn-xs layui-btn-warm" lay-event="detail">查看详情</a>
-                </script>
-            </div>
-            <div class="layui-tab-item">
-                <table id="goodsBillTable3" lay-filter="goodsBillTool"></table>
-                <script type="text/html" id="barDemo3">
-                    <a class="layui-btn layui-btn-xs layui-btn-warm" lay-event="detail">查看详情</a>
-                </script>
-            </div>
-            <div class="layui-tab-item">
-                <table id="goodsBillTable4" lay-filter="goodsBillTool"></table>
-                <script type="text/html" id="barDemo4">
-                    <a class="layui-btn layui-btn-xs layui-btn-warm" lay-event="detail">查看详情</a>
-                </script>
-                <script id="createTime" type="text/html">
-                    {{ createTime(d.occurTime) }}
-                </script>
-            </div>
-        </div>
-    </div>
-    <script src="../../../layui/layui.js"></script>
-    <script src="../../../js/jquery/jquery-3.3.1.js"></script>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 接货管理 <span class="c-gray en">&gt;</span> 查询接货单 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div class="page-container">
+	<!--<div class="text-c"> 日期范围：
+		<input type="text" onfocus="WdatePicker({ maxDate:'#F{$dp.$D(\'datemax\')||\'%y-%M-%d\'}' })" id="datemin" class="input-text Wdate" style="width:120px;">
+		-
+		<input type="text" onfocus="WdatePicker({ minDate:'#F{$dp.$D(\'datemin\')}',maxDate:'%y-%M-%d' })" id="datemax" class="input-text Wdate" style="width:120px;">
+		<input type="text" class="input-text" style="width:250px" placeholder="输入会员名称、电话、邮箱" id="" name="">
+		<button type="submit" class="btn btn-success radius" id="" name=""><i class="Hui-iconfont">&#xe665;</i> 搜用户</button>
+	</div>-->
+	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"> <a href="javascript:;" onclick="tableone()" class="btn btn-primary radius"> 未填订单 </a>
+	 <a href="javascript:;" onclick="tabletwo()" class="btn btn-primary radius"> 待发订单 </a>
+		 <a href="javascript:;" onclick="tablethree()" class="btn btn-primary radius"> 未到订单 </a>
+		 <a href="javascript:;" onclick="tablefour()" class="btn btn-primary radius"> 已到订单 </a>
+		 <a href="javascript:;" onclick="tablefive()" class="btn btn-primary radius"> 未结订单 </a>
+		 <a href="javascript:;" onclick="tablesix()" class="btn btn-primary radius"> 所有订单 </a>
+	</span>
+		<span class="r">共有数据：<strong>88</strong> 条</span> </div>
+	<div class="mt-20">
+	<table id="table1" class="table table-border table-bordered table-hover table-bg table-sort"><!--未填订单表格-->
+		<thead>
+			<tr class="text-c">
 
-    <script src="../../../js/nginx.js"></script>
-    <script src="../../../js/goodsBillControl/detail/goodsBillDetail.js"></script>
+				<th width="30">ID</th>
+				<th width="100">货运单编号</th>
+				<th width="100">事件名称</th>
+				<th width="100">备注</th>
+				<th width="100">发生时间</th>
+				<th width="100">操作</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="text-c">
+				<td>1</td>
+				<td>HY312321</td>
+				<td>未填</td>
+				<td></td>
+				<td>2014-6-11 11:11:42</td>
+				<td><a href="javascript:;" onclick="edit('填写订单','../edit/editGoodsBill.html','1','500','510')" class="btn btn-danger radius"> 修改 </a>
+					<a href="javascript:;" onclick="modify('查看订单','modifyDetail.html','1','500','510')" class="btn btn-default radius"> 查看 </a>
+					<a href="javascript:;" onclick="" class="btn btn-primary radius"> 删除 </a></td>
+			</tr>
+		</tbody>
+	</table>
+		<table id="table2" class="table table-border table-bordered table-hover table-bg table-sort"><!--待运订单表格-->
+			<thead>
+			<tr class="text-c">
 
+				<th width="30">ID</th>
+				<th width="100">货运单编号</th>
+				<th width="100">事件名称</th>
+				<th width="100">备注</th>
+				<th width="100">发生时间</th>
+				<th width="100">操作</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr class="text-c">
+				<td>1</td>
+				<td>HY312321</td>
+				<td>待运</td>
+				<td></td>
+				<td>2014-6-11 11:11:42</td>
+				<td><a href="javascript:;" onclick="edit('填写订单','../edit/editGoodsBill.html','1','500','510')" class="btn btn-danger radius"> 修改 </a>
+					<a href="javascript:;" onclick="modify('查看订单','modifyDetail.html','1','500','510')" class="btn btn-default radius"> 查看 </a>
+					<a href="javascript:;" onclick="" class="btn btn-primary radius"> 删除 </a></td>
+			</tr>
+			</tbody>
+		</table>
+		<table id="table3" class="table table-border table-bordered table-hover table-bg table-sort"><!--未到订单表格-->
+			<thead>
+			<tr class="text-c">
+
+				<th width="30">ID</th>
+				<th width="100">货运单编号</th>
+				<th width="100">事件名称</th>
+				<th width="100">备注</th>
+				<th width="100">发生时间</th>
+				<th width="100">操作</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr class="text-c">
+				<td>1</td>
+				<td>HY312321</td>
+				<td>未到</td>
+				<td></td>
+				<td>2014-6-11 11:11:42</td>
+				<td>
+					<a href="javascript:;" onclick="modify('查看订单','modifyDetail.html','1','500','510')" class="btn btn-default radius"> 查看 </a>
+				</td>
+			</tr>
+			</tbody>
+		</table>
+		<table id="table4" class="table table-border table-bordered table-hover table-bg table-sort"><!--已到订单表格-->
+			<thead>
+			<tr class="text-c">
+
+				<th width="30">ID</th>
+				<th width="100">货运单编号</th>
+				<th width="100">事件名称</th>
+				<th width="100">备注</th>
+				<th width="100">发生时间</th>
+				<th width="100">操作</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr class="text-c">
+				<td>1</td>
+				<td>HY312321</td>
+				<td>已到</td>
+				<td></td>
+				<td>2014-6-11 11:11:42</td>
+				<td>
+					<a href="javascript:;" onclick="modify('查看订单','modifyDetail.html','1','500','510')" class="btn btn-default radius"> 查看 </a>
+				</td>
+			</tr>
+			</tbody>
+		</table>
+		<table id="table5" class="table table-border table-bordered table-hover table-bg table-sort"><!--未结订单表格-->
+			<thead>
+			<tr class="text-c">
+
+				<th width="30">ID</th>
+				<th width="100">货运单编号</th>
+				<th width="100">事件名称</th>
+				<th width="100">备注</th>
+				<th width="100">发生时间</th>
+				<th width="100">操作</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr class="text-c">
+				<td>1</td>
+				<td>HY312321</td>
+				<td>未结</td>
+				<td></td>
+				<td>2014-6-11 11:11:42</td>
+				<td>
+					<a href="javascript:;" onclick="modify('查看订单','modifyDetail.html','1','500','510')" class="btn btn-default radius"> 查看 </a>
+				</td>
+			</tr>
+			</tbody>
+		</table>
+
+		<table id="table6" class="table table-border table-bordered table-hover table-bg table-sort"><!--所有订单表格-->
+			<thead>
+			<tr class="text-c">
+
+				<th width="30">ID</th>
+				<th width="100">货运单编号</th>
+				<th width="100">事件名称</th>
+				<th width="100">备注</th>
+				<th width="100">发生时间</th>
+				<th width="100">操作</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr class="text-c">
+				<td>1</td>
+				<td>HY312321</td>
+				<td>***</td>
+				<td></td>
+				<td>2014-6-11 11:11:42</td>
+				<td>
+					<a href="javascript:;" onclick="modify('查看订单','modifyDetail.html','1','500','510')" class="btn btn-default radius"> 查看 </a>
+				</td>
+			</tr>
+			</tbody>
+		</table>
+
+	</div>
+</div>
+<!--_footer 作为公共模版分离出去-->
+<script type="text/javascript" src="../../../lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="../../../lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="../../../static/h-ui/js/H-ui.min.js"></script>
+<script type="text/javascript" src="../../../static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript" src="../../../lib/My97DatePicker/4.8/WdatePicker.js"></script>
+<script type="text/javascript" src="../../../lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="../../../lib/laypage/1.2/laypage.js"></script>
+<script type="text/javascript">
+$(function(){
+	/*$('.table-sort').dataTable({
+		"aaSorting": [[ 1, "desc" ]],//默认第几个排序
+		"bStateSave": true,//状态保存
+		"aoColumnDefs": [
+		  //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
+		  {"orderable":false,"aTargets":[0,8,9]}// 制定列不参与排序
+		]
+	});*/
+    $("#table1").hide();
+    $("#table2").hide();
+    $("#table3").hide();
+    $("#table4").hide();
+    $("#table5").hide();
+
+
+});
+function tableHide() {
+    $("#table1").hide();
+    $("#table2").hide();
+    $("#table3").hide();
+    $("#table4").hide();
+    $("#table5").hide();
+    $("#table6").hide();
+}
+
+function tableone() {
+    tableHide();
+    $("#table1").show();
+
+}
+function tabletwo() {
+    tableHide();
+    $("#table2").show();
+}
+function tablethree() {
+    tableHide();
+    $("#table3").show();
+}
+function tablefour() {
+    tableHide();
+    $("#table4").show();
+}
+function tablefive() {
+    tableHide();
+    $("#table5").show();
+}
+function tablesix() {
+    tableHide();
+    $("#table6").show();
+}
+
+
+
+
+function edit(title,url,id,w,h){
+	layer_show(title,url,w,h);
+}
+
+function modify(title,url,id,w,h){
+    layer_show(title,url,w,h);
+}
+
+
+/*用户-删除*/
+function member_del(obj,id){
+	layer.confirm('确认要删除吗？',function(index){
+		$.ajax({
+			type: 'POST',
+			url: '',
+			dataType: 'json',
+			success: function(data){
+				$(obj).parents("tr").remove();
+				layer.msg('已删除!',{icon:1,time:1000});
+			},
+			error:function(data) {
+				console.log(data.msg);
+			},
+		});		
+	});
+}
+</script> 
 </body>
 </html>
