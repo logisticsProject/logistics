@@ -98,4 +98,7 @@
     from orders
   </select>
 
+  <insert id="insertorder" parameterType="com.sixbang.logistics.domain.Orders">
+  insert into orders (numbering,sendor_id,receiver_id,state_id) values(#{numbering},#{sendorId},#{receiverId},#{stateId});
+  </insert>
 </mapper>

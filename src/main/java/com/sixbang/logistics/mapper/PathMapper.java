@@ -13,4 +13,10 @@ public interface PathMapper {
     List<Path> selectAll();
 
     int updateByPrimaryKey(Path record);
+
+    List<String> selectStartPlace();
+
+    List<String> selectEndPlace(String startPlace);
+
+    int selectPathId(Path path);
 }

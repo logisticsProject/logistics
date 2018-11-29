@@ -17,6 +17,9 @@
       sphone, saddress)
     values (#{sid,jdbcType=INTEGER}, #{numbering,jdbcType=VARCHAR}, #{sname,jdbcType=VARCHAR}, 
       #{sphone,jdbcType=VARCHAR}, #{saddress,jdbcType=VARCHAR})
+    <selectKey keyProperty="sid" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.sixbang.logistics.domain.Sender">
     update sender

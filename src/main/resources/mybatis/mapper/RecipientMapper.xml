@@ -17,6 +17,9 @@
       rphone, raddress)
     values (#{rid,jdbcType=INTEGER}, #{numbering,jdbcType=VARCHAR}, #{rname,jdbcType=VARCHAR}, 
       #{rphone,jdbcType=VARCHAR}, #{raddress,jdbcType=VARCHAR})
+    <selectKey keyProperty="rid" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.sixbang.logistics.domain.Recipient">
     update recipient

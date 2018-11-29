@@ -1,0 +1,209 @@
+<!--_meta 作为公共模版分离出去-->
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="Bookmark" href="/favicon.ico" >
+    <link rel="Shortcut Icon" href="/favicon.ico" />
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="../../js/html5shiv.js"></script>
+    <script type="text/javascript" src="../../js/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" type="text/css" href="../../static/h-ui/css/H-ui.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../static/h-ui.admin/css/H-ui.admin.css" />
+    <link rel="stylesheet" type="text/css" href="../../js/Hui-iconfont/1.0.8/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="../../static/h-ui.admin/skin/default/skin.css" id="skin" />
+    <link rel="stylesheet" type="text/css" href="../../static/h-ui.admin/css/style.css" />
+    <!--[if IE 6]>
+    <script type="text/javascript" src="../../js/DD_belatedPNG_0.0.8a-min.js" ></script>
+    <script>DD_belatedPNG.fix('*');</script>
+    <![endif]-->
+    <!--/meta 作为公共模版分离出去-->
+
+    <title>国际物流网</title>
+
+</head>
+<body>
+<article class="page-container">
+    <form   method="post" class="form form-horizontal" id="form-member-add">
+
+        <input type="hidden" class="input-text" name="id" id="id">
+
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>姓名:</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="" placeholder="" id="sname" name="sname">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>电话:</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" name="sphone" id="sphone">
+            </div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>请选择出发地:</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <select id="startplace">
+
+                </select>
+
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>请选择到达地:</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <select id="endplace">
+
+                </select>
+            </div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>收货人姓名:</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="" placeholder="" id="rname" name="rname">
+            </div>
+        </div>
+        <div class="row cl" id="pPwd">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>收货人电话:</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" name="rphone" id="rphone">
+            </div>
+        </div>
+
+
+
+        <div class="row cl">
+            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+                <input class="btn btn-primary radius" id="but" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+            </div>
+        </div>
+    </form>
+</article>
+
+<!--_footer 作为公共模版分离出去-->
+<script type="text/javascript" src="../../js/jquery-1.9.0.min.js"></script>
+<script type="text/javascript" src="../../js/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="../../static/h-ui/js/H-ui.min.js"></script>
+<script type="text/javascript" src="../../static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript" src="../../js/My97DatePicker/4.8/WdatePicker.js"></script>
+<script type="text/javascript" src="../../js/jquery.validation/1.14.0/jquery.validate.js"></script>
+<script type="text/javascript" src="../../js/jquery.validation/1.14.0/validate-methods.js"></script>
+<script type="text/javascript" src="../../js/jquery.validation/1.14.0/messages_zh.js"></script>
+<script type="text/javascript" src="../../js/notes.js"></script>
+
+<script type="text/javascript">
+$(function () {
+    //查询加载数据库中的startplace
+    $.ajax({
+        url:HOST_URL + "path/selpath",
+        type:"get",
+        dataType:'json',
+        contentType: "application/json;cahrset=UTF-8",
+        success:function (data) {
+            var str="";
+            $.each(data,function (index,i) {
+                str+= "<option  value="+i+">"+i+"</option>";
+            })
+            $("#startplace").append(str);
+        }
+    })
+
+
+    $("#startplace").change(function () {
+        $("#endplace").empty();
+        var sa=$("#startplace").val();
+        //当出发地被改变后从数据库加载当前选择的出发地所能达到的到达地
+        $.ajax({
+            url:HOST_URL + "path/endplace",
+            type:"get",
+            data:{"saddress":$("#startplace").val()},
+            dataType:"json",
+            contentType: "application/json;charset=UTF-8",
+            success:function (data) {
+                var str="";
+                $.each(data,function (index,i) {
+                    str+= "<option  value="+i+">"+i+"</option>";
+                })
+                $("#endplace").append(str);
+            }
+        })
+    })
+
+    $("#form-member-add").validate({
+        rules:{
+            sname:{
+                required:true,
+                minlength:2,
+                maxlength:4
+            },
+            sphone:{
+                required:true,
+            },
+
+            saddress:{
+                required:true,
+            },
+
+            rname:{
+                required:true,
+                minlength:2,
+                maxlength:4
+            },
+
+            rphone:{
+                required:true,
+            },
+
+            raddress:{
+                required:true,
+            }
+
+        },
+        onkeyup:false,
+        focusCleanup:true,
+        success:"valid",
+        submitHandler:function(form){
+            var sname = $("#sname").val();
+            var sphone = $("#sphone").val();
+            var saddress = $("#startplace").val();
+            var rname = $("#rname").val();
+            var rphone = $("#rphone").val();
+            var raddress = $("#endplace").val();
+            console.log(sname+sphone+saddress+rname+rphone+raddress);
+            if(saddress==null || raddress==null){
+                layer.alert("出发地和到达地不能为空");
+            }
+          $.ajax({
+                url:HOST_URL+"api/unfinished",
+                type:"post",
+                data:{"sname": sname,
+                    "sphone": sphone,
+                    "saddress": saddress,
+                    "rname": rname,
+                    "rphone": rphone,
+                    "raddress": raddress
+                },
+                dataType:"json",
+                xhrFields:{withCredentials:true},
+                success:function (data) {
+                    alert("操作成功！稍后会有我们工作人员联系您，请保持通话畅通");
+                }
+
+            });
+
+        }
+    });
+});
+</script>
+<!--/请在上方写此页面业务相关的脚本-->
+</body>
+</html>

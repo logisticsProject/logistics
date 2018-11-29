@@ -56,6 +56,8 @@ public class Orders implements Serializable {
 
     private Double goodsValue;
 
+    private Integer pathId;
+
     private static final long serialVersionUID = 1L;
 
     public Integer getId() {
@@ -264,6 +266,14 @@ public class Orders implements Serializable {
 
     public void setGoodsValue(Double goodsValue) {
         this.goodsValue = goodsValue;
+    }
+
+    public Integer getPathId() {
+        return pathId;
+    }
+
+    public void setPathId(Integer pathId) {
+        this.pathId = pathId;
     }
 
     @Override

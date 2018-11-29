@@ -4,6 +4,7 @@ import com.sixbang.logistics.domain.Path;
 import com.sixbang.logistics.service.PathService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,6 +19,10 @@ public class PathContorller {
 
     @Autowired
     private PathService pathService;
+
+    public int addPath(Path path){
+        return pathService.addPath(path);
+    }
 
 
     @RequestMapping(value = "/selAll",method = RequestMethod.GET)
@@ -71,5 +76,25 @@ public class PathContorller {
                 return new ResponseEntity<>("新增失败", HttpStatus.OK);
             }
         }
+    }
+
+    //查询所有出发地
+    @RequestMapping(value = "selpath",method = RequestMethod.GET)
+    public ResponseEntity<?> selectStartPlace(){
+        List<String> placeList=pathService.selectStartPlace();
+        return new ResponseEntity<>(placeList,HttpStatus.OK);
+    }
+
+    //根据出发地查询到达地
+    @RequestMapping(value = "endplace",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ResponseEntity<?> selectStopPlace(@RequestParam(name = "saddress") String startPlace){
+        List<String> placeList=pathService.selectEndPlace(startPlace);
+        return new ResponseEntity<>(placeList,HttpStatus.OK);
+    }
+
+    //根据出发地和到达地获得路线ID
+    public int getPathId(Path path){
+        int pathId=pathService.selectPathId(path);
+        return pathId;
     }
 }

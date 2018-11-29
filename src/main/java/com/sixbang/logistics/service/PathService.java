@@ -33,4 +33,21 @@ public class PathService {
         return pathMapper.insert(path);
     }
 
+    public List<String> selectStartPlace(){
+        return pathMapper.selectStartPlace();
+    }
+
+    public List<String> selectEndPlace(String startPlace){
+        return pathMapper.selectEndPlace(startPlace);
+    }
+
+    public int selectPathId(Path path){
+        return pathMapper.selectPathId(path);
+    }
+
+    public int addPath(Path path){
+        return pathMapper.insert(path);
+    }
+
+
 }

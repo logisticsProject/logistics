@@ -34,4 +34,16 @@
     from path
   </select>
 
+  <select id="selectStartPlace" resultType="java.lang.String">
+    select startplace from path group by startplace
+  </select>
+
+  <select id="selectEndPlace" parameterType="java.lang.String" resultType="java.lang.String">
+    select endplace from path where startplace=#{startplace}
+  </select>
+
+  <select id="selectPathId" parameterType="com.sixbang.logistics.domain.Path" resultType="int">
+    select id from path where startplace=#{startplace} and endplace=#{endplace}
+  </select>
+
 </mapper>
